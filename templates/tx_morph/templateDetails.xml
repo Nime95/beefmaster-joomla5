@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.1" type="template" method="upgrade" client="site">
+<extension version="5.0" type="template" method="upgrade" client="site">
 	<name>tx_morph</name>
 	<version>3.0.0</version>
 	<creationDate>Mar 10, 2022</creationDate>
@@ -8,9 +8,6 @@
 	<authorUrl>http://themexpert.com/</authorUrl>
 	<copyright>Copyright (C), 2017 ThemeXpert. All Rights Reserved.</copyright>
 	<license>license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
-	<t3>
-		<base>base-bs3</base>
-	</t3>
 	<scriptfile>script.php</scriptfile>
 	<description>
 		<![CDATA[
@@ -20,7 +17,7 @@
 				<p><a href="index.php?option=com_templates"><img src="https://www.themexpert.com/images/templates/morph/morph-main.jpg" alt="Joomla Template" width="300" height="262"></a></p>
 				<h4><a href="https://www.themexpert.com/joomla-templates/morph" title="">Home</a> | <a href="http://demo.themexpert.com/joomla/morph" title="">Demo</a> | <a href="https://www.themexpert.com/docs/joomla-templates/morph" title="">Documentation</a></h4>
 				<p> </p>
-				<span style="color:#FF0000">Note: Tx Morph requires T3 plugin to be installed and enabled.</span><p></p>
+				<span style="color:#008000">Note: Tx Morph is now compatible with Joomla 5 and uses modern template architecture.</span><p></p>
 				<p>Copyright 2004 - 2017 <a href='https://www.themexpert.com' title='Visit ThemeXpert.com!'>ThemeXpert.com</a>.</p>
 			</div>
 			<style>table.adminform{width: 100%;}</style>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="4.0" type="template" method="upgrade" group="template" client="site">
+<extension version="5.0" type="template" method="upgrade" group="template" client="site">
 	<name>TX_FINANCIO</name>
 	<version>3.0</version>
 	<creationDate>May 11, 2020</creationDate>
