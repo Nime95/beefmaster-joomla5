@@ -1,0 +1,23 @@
+advanced:
+  - name: identifier
+    type: fields-group
+    status: open
+    schema:
+      - name: label
+        advanced:
+          pro_field: true
+
+      - name: id
+        advanced:
+          pro_field: true
+
+      - name: class
+        advanced:
+          pro_field: true
+
+      - name: acl
+        label: Access Control
+        help: Joomla Access Control List
+        type: acl
+        advanced:
+          pro_field: true

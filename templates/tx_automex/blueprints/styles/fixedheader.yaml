@@ -1,0 +1,15 @@
+name: Sticky Styles
+description: Sticky styles for the Automex Template
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#130f40"

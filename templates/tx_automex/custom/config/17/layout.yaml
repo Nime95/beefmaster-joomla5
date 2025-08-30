@@ -1,0 +1,143 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: quix
+  timestamp: 1651560790
+layout:
+  /topbar/:
+    -
+      - 'social-8812 33.3'
+      - 'social-9176 33.3'
+      - 'position-position-1937 33.3'
+  /header/:
+    -
+      - 'menu-9266 40'
+      - 'logo-5836 20'
+      - 'menu-7583 40'
+  /navigation/: {  }
+  /main/:
+    -
+      - system-messages-5477
+    -
+      - system-content-1161
+  /contentbottom/: {  }
+  /footer/:
+    -
+      - position-position-6269
+  /copyright/:
+    -
+      - copyright-4571
+  offcanvas:
+    -
+      - mobile-menu-8586
+structure:
+  topbar:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-vertical-paddings-large
+      extra:
+        -
+          sticky-header: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  contentbottom:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+  offcanvas:
+    attributes:
+      position: g-offcanvas-right
+      class: ''
+      extra: {  }
+      swipe: '1'
+      css3animation: '1'
+content:
+  social-8812:
+    attributes:
+      css:
+        class: ''
+      target: _self
+      items:
+        -
+          icon: ''
+          text: 'About us'
+          title: ''
+          link: '#aboutus'
+          name: 'Über uns'
+        -
+          icon: ''
+          text: Map
+          title: ''
+          link: '#map'
+          name: Map
+    block:
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom'
+  social-9176:
+    attributes:
+      display: icons_only
+      items:
+        -
+          icon: 'fa fa-facebook'
+          text: ''
+          title: ''
+          link: 'http://www.facebook.at/beefmasteraustria'
+          name: Facebook
+    block:
+      variations: 'align-right nomargintop nomarginbottom nopaddingbottom nopaddingtop'
+  position-position-1937:
+    title: 'Module Position'
+    attributes:
+      key: topbar-right
+  menu-9266:
+    block:
+      variations: 'nomargintop nomarginbottom align-right'
+  logo-5836:
+    title: 'Logo / Image'
+    attributes:
+      target: _self
+      image: 'gantry-media://Logo.png'
+      height: 137px
+    block:
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom center'
+  menu-7583:
+    attributes:
+      menu: left-menu
+    block:
+      variations: 'align-left nomarginbottom nomargintop'
+  position-position-6269:
+    title: 'Module Position'
+    attributes:
+      key: footer
+    block:
+      variations: nomarginall
+  copyright-4571:
+    attributes:
+      additional:
+        text: 'Beefmaster Austria. All Rights Reserved. Design and Developed by Micha Hamersky. Pictures by Micha Hamersky and Beefmaster Breeders United'
+    block:
+      variations: center

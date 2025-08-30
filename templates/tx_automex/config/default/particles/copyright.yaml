@@ -1,0 +1,11 @@
+enabled: '1'
+date:
+  start: now
+  end: now
+owner: ''
+link: ''
+target: _blank
+additional:
+  text: 'AutoMex. All Rights Reserved. Design and Developed by <a href="https://www.themexpert.com/" title="Quix Page Builder" class="g-powered-by">ThemeXpert</a>'
+css:
+  class: ''

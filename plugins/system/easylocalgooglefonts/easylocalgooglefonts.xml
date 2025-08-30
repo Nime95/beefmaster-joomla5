@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+        <name>plg_system_easylocalgooglefonts</name>
+        <author>JoomBoost</author>
+        <authorEmail>support@joomboost.com</authorEmail>
+        <creationDate>10/02/2019</creationDate>
+        <copyright>Copyright (C) 2020 JoomBoost.</copyright>
+        <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+        <description>PLG_SYSTEM_EASYLOCALGOOGLEFONTS_DESCRIPTION</description>
+        <version>4.0</version>
+        <languages>
+            <language tag="en-GB">language/en-GB.plg_system_easylocalgooglefonts.ini</language>
+            <language tag="en-GB">language/en-GB.plg_system_easylocalgooglefonts.sys.ini</language>
+        </languages>
+        <files>
+                <filename plugin="easylocalgooglefonts">easylocalgooglefonts.php</filename>
+        </files>
+        <media destination="plg_system_easylocalgooglefonts" folder="media">
+                <folder>fonts</folder>
+        </media>
+
+        <dlid/>
+
+        <updateservers>
+                <server type="extension" priority="1" name="Easy Local Google Fonts">
+                        <![CDATA[https://www.joomboost.com/index.php?option=com_mediastore&task=pluginTask&plugin=joomla&subtask=server&id=205]]>
+                </server>
+        </updateservers>
+
+</extension>

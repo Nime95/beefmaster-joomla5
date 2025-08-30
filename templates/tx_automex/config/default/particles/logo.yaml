@@ -1,0 +1,5 @@
+enabled: '1'
+url: ''
+image: 'gantry-theme://images/logo.png'
+text: 'Automex'
+class: automex-logo

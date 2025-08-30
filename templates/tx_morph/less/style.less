@@ -1,0 +1,361 @@
+/**
+ *------------------------------------------------------------------------------
+ * @package       T3 Framework for Joomla!
+ *------------------------------------------------------------------------------
+ * @copyright     Copyright (C) 2004-2013 JoomlArt.com. All Rights Reserved.
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
+ * @authors       JoomlArt, JoomlaBamboo, (contribute to this project at github
+ *                & Google group to become co-author)
+ * @Google group: https://groups.google.com/forum/#!forum/t3fw
+ * @Link:         http://t3-framework.org
+ *------------------------------------------------------------------------------
+ */
+
+// ---------------------------------------------------------
+// MAIN TEMPLATE STYLES
+// ---------------------------------------------------------
+
+.mod-languages {
+  line-height: 1.1;
+}
+.col-2 {
+  column-count: 2;
+}
+.no-max-width img {
+    max-width: inherit;
+}
+
+.tx-box-shadow {
+  box-shadow: @default-box-shadow;
+}
+
+.bordered-image {
+  .qx-element-image{ border-right: 1px solid #e2e2e2; position: relative; margin: 0;  }
+  .qx-column {padding: 0;}
+  .qx-column:last-child .qx-element-image{border-right: 0; }
+  .qx-element-image + .qx-element-image:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    width: 100%;
+    border-top: 1px solid #e2e2e2;
+  }
+
+}
+
+.dark-bg {
+  a {
+    &:hover {
+      color: #fff !important;
+    }
+  }
+}
+
+.ovfh {
+  overflow: hidden;
+}
+
+.promo-area {
+    .qx-column:not(:last-child) {
+        border-right: 1px dashed #e1e0e0;
+    }
+}
+
+.check-box {
+  list-style: none;
+  padding: 0;
+  li {
+    position: relative;
+    padding-left: 25px;
+    &:before {
+      content: "\f046";
+      font-family: 'FontAwesome';
+      position: absolute;
+      left: 0;
+      color: @brand-primary;
+    }
+  }
+}
+
+.check {
+  list-style: none;
+  padding: 0;
+  li {
+    position: relative;
+    padding-left: 25px;
+    &:before {
+      content: "\f00c";
+      font-family: 'FontAwesome';
+      position: absolute;
+      left: 0;
+      color: #252525;
+    }
+  }
+}
+
+
+
+.check-circle {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    padding-left: 40px;
+    line-height: 1.7;
+
+
+    &:before {
+      content: "\f05d";
+      position: absolute;
+      font-family: "FontAwesome";
+      left: 0;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1;
+      color: @brand-primary;
+    }
+  }
+}
+.inline li {
+  display: inline-block;
+  &:not(:last-child) {
+    margin-right: 25px;
+  }
+}
+
+
+
+
+
+.page-title, .page-header h1 {
+  // margin-bottom: 50px;
+}
+
+@media only screen and (min-width : 768px) {
+  .separator-circle .qx-column:first-child {
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      background: white;
+    }
+    &:before {
+      width: 16px;
+      height: 100%;
+      right: 0;
+      top: 0;
+      margin-right: -8px;
+      z-index: 10;
+    }
+
+    &:after {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      right: 0;
+      top: 50%;
+      margin-right: -50px;
+      margin-top: -50px;
+      z-index: 13;
+    }
+  }
+}
+@media only screen and (max-width : 992px) {
+  .bordered-image .qx-element-image,
+  .bordered-image .qx-element-image + .qx-element-image:before {
+    border: none;
+  }
+}
+
+
+.t3-wrapper::after {
+    top: -100% !important;
+}
+
+
+// Absolute
+.absolute {
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  top: @navbar-height;
+  z-index: 99999;
+  width: 50px;
+  text-align: center;
+  right: 0;
+
+  .sidebar-social {
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      a {
+        display: block;
+        color: #454868;
+
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+    }
+  }
+}
+
+.psr {
+  position: relative;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+}
+
+.tx-footer, .tx-header, .tx-header-top {
+  a {
+    &:hover {
+      color: @brand-primary !important;
+    }
+  }
+
+  button.btn-subscribe {
+    margin-left: -5px;
+  }
+  .form-inline {
+    overflow: hidden;
+    clear: both;
+
+    .form-group {
+      width: 80%;
+      float: left;
+    }
+  }
+  .form-inline .form-control {
+    width: 100%;
+  }
+
+  &.dark-bg {
+    a {
+      &:hover {
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+
+
+/**
+* User Login
+*/
+.com_users.view-login .t3-mainbody,
+.com_users.view-remind .t3-mainbody,
+.com_users.view-reset .t3-mainbody,
+.com_users.view-registration .t3-mainbody {
+  background: #f5f5f5;
+
+  .login-box-wraper {
+    background: #fff;
+    box-shadow: @default-box-shadow;
+    padding: 60px 50px;
+
+    .btn-primary {
+      padding: 15px 30px;
+      line-height: 1;
+    }
+
+    .box-title, .title {
+      margin-top: 0;
+      margin-bottom: 60px;
+    }
+
+    .form-control,
+    .controls input {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .reset-user {
+      margin-top: 15px;
+    }
+  }
+}
+
+// Lazy Load Placeholder
+img.lazy:not([src]) {
+  height: 60px !important;
+  background: @brand-primary;
+}
+
+
+//Subscription Box
+.subscription-form {
+  .input-box {
+    width: 65%;
+    color: #fff;
+    margin-right: 20px;
+
+    .form-control {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid #fff;
+      padding-left: 0;
+      color: #fff;
+      box-shadow: none;
+    }
+    input::placeholder {
+      color: #fff;
+    }
+  }
+
+  .btn-subscribe {
+    max-width: 28%;
+    padding: 8px 25px;
+    border-radius: 50px;
+    background: #19283f;
+    border-color: #19283f;
+    color: #fff;
+  }
+}
+
+
+
+
+// Footer
+.t3-footer {
+  // padding: 100px 0;
+  background: #19283f;
+
+  .t3-module {
+    background: transparent !important;
+
+    .module-title , p, a {
+      color: #fff;
+    }
+    a:hover {
+      color: @brand-primary;
+    }
+  }
+  .t3-copyright  {
+    border-top: 1px solid #3a363a;
+    small {
+      color: @white;
+      a {
+        color: @brand-warning;
+        &:hover {
+          color: @brand-secondary;
+        }
+      }
+    }
+  }
+}

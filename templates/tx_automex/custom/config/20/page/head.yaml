@@ -1,0 +1,29 @@
+meta: {  }
+atoms:
+  -
+    id: assets-1836
+    type: assets
+    title: 'Custom CSS / JS'
+    attributes:
+      enabled: '1'
+      css:
+        - { location: '', inline: "#preloaderID {\n    position: fixed;\n    height: 100vh;\n    width: 100vw;\n    z-index: 30;\n    top: 0;\n        display: flex;\n    align-items: center;\njustify-content: center;\n}\n#preloaderID img {width:auto;height:auto;}", extra: {  }, priority: '0', name: '#preloaderID' }
+        - { location: '', inline: ".headroom--top.headroom--not-bottom,\n.headroom--pinned.headroom--top{\n    top: 40px;\t\n}\n\n.headroom--not-top.headroom--pinned{\n\ttop: 0px;\n}\n\n.headroom--not-top.headroom--unpinned{\n\ttop: 0px;\n}\n\n", extra: {  }, priority: '0', name: stickyHeader }
+        - { name: 'New item' }
+      javascript:
+        - { location: '', inline: "jQuery(document).ready(function() {\n  // Check if the cookie exists\n  if (getCookie(\"preloader\") === \"\") {\n    // Append the preloader GIF and center it\n    let $preloaderImg = $('<img src=\"http://www.beefmaster.at/images/poster/BMA_Alpha_white_256.mp4\" />').css({\n      position: \"absolute\",\n      top: \"50%\",\n      left: \"50%\",\n      transform: \"translate(-50%, -50%)\",\n      zIndex: \"9999\"\n    });\n    $(\"#preloaderID\").css(\"background\", \"#afa177\");\n    setTimeout(() => jQuery(\"#preloaderID\").fadeOut(), 2500);\n    // Set a cookie to indicate preloading has occurred\n    setCookie(\"preloader\", \"true\", 90); // Change 365 to the number of days you want the cookie to last\n  } else {\n    $('#preloaderID').hide();\n  }\n});\n\n// Function to set a cookie\nfunction setCookie(name, value, days) {\n  let expires = \"\";\n  if (days) {\n    let date = new Date();\n    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));\n    expires = \"; expires=\" + date.toUTCString();\n  }\n  document.cookie = name + \"=\" + (value || \"\") + expires + \"; path=/\";\n}\n\n// Function to get a cookie value by name\nfunction getCookie(name) {\n  let nameEQ = name + \"=\";\n  let cookies = document.cookie.split(';');\n  for (let i = 0; i < cookies.length; i++) {\n    let cookie = cookies[i];\n    while (cookie.charAt(0) === ' ') {\n      cookie = cookie.substring(1, cookie.length);\n    }\n    if (cookie.indexOf(nameEQ) === 0) {\n      return cookie.substring(nameEQ.length, cookie.length);\n    }\n  }\n  return \"\";\n}\n", in_footer: '0', extra: {  }, priority: '0', name: '#preloaderID_new' }
+        - { location: '', inline: "  jQuery(document).ready(function()\n{\n  if (sessionStorage.getItem(\"preloader\") == null)\n  {\n     $(\"#preloaderID\").append('<img src=\"http://www.beefmaster.at/images/poster/BM-Logo_Alpha_white_256.png\" />');\n     $(\"#preloaderID\").css(\"background\", \"#afa177\");\n     setTimeout(() => jQuery(\"#preloaderID\").fadeOut(), 2500);\n     sessionStorage.setItem (\"preloader\", \"true\");\n  }\n  else{\n      $('#preloaderID').hide();\n  }\n });", in_footer: '0', extra: {  }, priority: '0', name: '#preloaderID' }
+  -
+    id: fixedheader-9221
+    type: fixedheader
+    title: 'Fixed Header'
+    attributes:
+      enabled: '1'
+      section: '#g-header'
+      pinnedbg: section
+      custombg: '#ffffff'
+      autohide: enabled
+      mobile: disabled
+      padding: '40'
+      offset: '40'
+      tolerance: '40'

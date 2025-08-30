@@ -1,0 +1,17 @@
+name: Quix
+description: Display quix template
+type: particle
+icon: fa-home
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable quix particles.
+      default: true
+
+    quix.id:
+      type: input.number
+      label: Template Id
+      description: Select preferred quix template id

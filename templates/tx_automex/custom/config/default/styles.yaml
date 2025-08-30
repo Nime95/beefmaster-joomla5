@@ -1,0 +1,76 @@
+preset: preset1
+base:
+  background: '#afa177'
+  text-color: '#000000'
+accent:
+  color-1: '#ffffff'
+  color-2: '#afa177'
+font:
+  family-default: Silka
+  family-title: Silka
+link:
+  regular: '#e53e29'
+  hover: '#130f40'
+topbar:
+  background: '#19191b'
+  text-color: '#ffffff'
+navigation:
+  background: '#ffffff'
+  text-color: '#130f40'
+  text-hover-color: '#e53e29'
+  dropdown-bg: '#ffffff'
+  dropdown-text: '#130f40'
+  overlay: 'rgba(0, 0, 0, 0.4)'
+header:
+  background: '#afa177'
+  background-image: ''
+  background-overlay: enabled
+  text-color: '#130f40'
+intro:
+  background: '#ffffff'
+  text-color: '#130f40'
+features:
+  background: '#ffffff'
+  text-color: '#130f40'
+utility:
+  background: '#ffffff'
+  text-color: '#130f40'
+above:
+  background: '#e53e29'
+  text-color: '#130f40'
+testimonials:
+  background: '#ffffff'
+  background-image: ''
+  background-overlay: enabled
+  text-color: '#130f40'
+expanded:
+  background: '#130f40'
+  text-color: '#ffffff'
+main:
+  background: '#ffffff'
+  text-color: '#130f40'
+footer:
+  background: '#19191b'
+  text-color: '#130f40'
+offcanvas:
+  background: '#130f40'
+  text-color: '#ffffff'
+  width: 12rem
+  toggle-color: '#130f40'
+  toggle-visibility: '1'
+social:
+  background: 'rgba(255,255,255,0)'
+  text-color: '#130f40'
+fixedheader:
+  background: '#ffffff'
+  text-color: '#130f40'
+breakpoints:
+  large-desktop-container: 75rem
+  desktop-container: 60rem
+  tablet-container: 48rem
+  large-mobile-container: 30rem
+  mobile-menu-breakpoint: 48rem
+menu:
+  col-width: 180px
+  animation: g-fade
+  hide-on-mobile: '0'

@@ -1,0 +1,5 @@
+AuthUserFile /home/sites/www.beefmaster.at/web/.htpasswd
+AuthName Admin
+AuthType Basic
+Require user admin admin_nime
+AuthGroupFile /home/sites/www.beefmaster.at/web/.group

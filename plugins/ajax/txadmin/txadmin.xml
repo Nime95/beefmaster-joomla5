@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="ajax" method="upgrade">
+    <name>TX Admin</name>
+    <author>ThemeXpert</author>
+    <creationDate>Nov 2016</creationDate>
+    <copyright>Copyright (C) 2010 - 2016 ThemeXpert. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later</license>
+    <authorEmail>support@themexpert.com</authorEmail>
+    <authorUrl>www.themexpert.com</authorUrl>
+    <version>1.1</version>
+    <description>Tx Admin</description>
+
+    <!-- UPDATESERVER DEFINITION -->
+    <updateservers>
+        <server type="extension" priority="1" name="TX Admin Update">https://raw.githubusercontent.com/themexpert/txadmin/master/mainfest.xml</server>
+    </updateservers>
+
+    <files>
+        <filename plugin="txadmin">txadmin.php</filename>
+        <folder>assets</folder>
+	<folder>classes</folder>
+    </files>
+</extension>

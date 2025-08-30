@@ -1,0 +1,9 @@
+automex-theme:
+  title: 'Automex Theme'
+  description: 'Sample menu for Automex theme.'
+
+  items:
+    automex:
+      title: 'Home'
+      outline: home
+      quix: 1

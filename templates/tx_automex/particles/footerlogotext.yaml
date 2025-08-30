@@ -1,0 +1,110 @@
+name: Footer Logo Text
+description: Display Footer Logo Text
+type: particle
+icon: fa-file-image-o
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable footer logo text particles.
+      default: true
+
+    url:
+      type: input.text
+      label: Url
+      description: Url for the image. Leave empty to go to home page.
+
+    target:
+      type: select.select
+      label: Target
+      description: Target browser window when logo is clicked.
+      placeholder: 'Select...'
+      default: _self
+      options:
+          _self: Same Frame (default)
+          _parent: Parent Frame
+          _blank: New Window or Tab
+
+    image:
+      type: input.imagepicker
+      label: Image
+      description: Select desired logo image.
+
+    height:
+      type: input.text
+      label: Maximum Height
+      description: Set image max. height in rem, em, px, or percentage unit values. Leave empty to use the default height.
+      pattern: '\d+(\.\d+){0,1}(rem|em|ex|ch|vw|vh|vmin|vmax|%|px|cm|mm|in|pt|pc)'
+
+    link:
+      type: input.checkbox
+      label: Link
+      description: Renders Logo/Image with a link.
+      default: true
+
+    svg:
+      type: textarea.textarea
+      label: SVG Code
+      description: Your SVG code that will be added inline to the site.
+      placeholder: 'Place your <svg> code here.'
+
+    title:
+      type: input.text
+      label: Title
+      description: Write the title  
+
+    text:
+      type: input.text
+      label: Text
+      description: Input logo description text.
+
+    display:
+      type: input.radios
+      label: Display
+      description: How to display the Social Icons
+      default: both
+      options:
+        icons_only: Icons Only
+        text_only: Text Only
+        both: Both      
+
+    items:
+          type: collection.list
+          array: true
+          label: Social Items
+          description: Create each social item to display.
+          value: name
+          ajax: true
+
+          fields:
+            .name:
+              type: input.text
+              label: Name
+              skip: true
+
+            .icon:
+              type: input.icon
+              label: Icon
+
+            .text:
+              type: input.text
+              label: Text
+
+            .title:
+              type: input.text
+              label: Title
+
+            .link:
+              type: input.text
+              label: Link      
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: Set a specific CSS class for custom styling.

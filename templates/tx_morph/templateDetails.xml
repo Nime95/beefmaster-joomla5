@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="template" method="upgrade" client="site">
+	<name>tx_morph</name>
+	<version>3.0.0</version>
+	<creationDate>Mar 10, 2022</creationDate>
+	<author>ThemeXpert.com</author>
+	<authorEmail>support@themexpert.com</authorEmail>
+	<authorUrl>http://themexpert.com/</authorUrl>
+	<copyright>Copyright (C), 2017 ThemeXpert. All Rights Reserved.</copyright>
+	<license>license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<t3>
+		<base>base-bs3</base>
+	</t3>
+	<scriptfile>script.php</scriptfile>
+	<description>
+		<![CDATA[
+		<div align="center">
+			<div class="alert alert-success" style="background-color:#DFF0D8;border-color:#D6E9C6;color: #468847;padding: 1px 0;">
+				<h3>Tx Morph</h3>
+				<p><a href="index.php?option=com_templates"><img src="https://www.themexpert.com/images/templates/morph/morph-main.jpg" alt="Joomla Template" width="300" height="262"></a></p>
+				<h4><a href="https://www.themexpert.com/joomla-templates/morph" title="">Home</a> | <a href="http://demo.themexpert.com/joomla/morph" title="">Demo</a> | <a href="https://www.themexpert.com/docs/joomla-templates/morph" title="">Documentation</a></h4>
+				<p> </p>
+				<span style="color:#FF0000">Note: Tx Morph requires T3 plugin to be installed and enabled.</span><p></p>
+				<p>Copyright 2004 - 2017 <a href='https://www.themexpert.com' title='Visit ThemeXpert.com!'>ThemeXpert.com</a>.</p>
+			</div>
+			<style>table.adminform{width: 100%;}</style>
+		</div>
+		]]>
+	</description>
+	<files>
+		<filename>changelog.md</filename>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>Readme.md</filename>
+		<filename>script.php</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>templateHook.php</filename>
+		<filename>templateInfo.php</filename>
+		<filename>thememagic.xml</filename>
+		<folder>admin</folder>
+		<folder>css</folder>
+		<folder>etc</folder>
+		<folder>fonts</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>less</folder>
+		<folder>lib</folder>
+		<folder>tpls</folder>
+
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_tx_morph.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_tx_morph.sys.ini</language>
+	</languages>
+
+	<positions>
+		<position>roof-1</position>
+		<position>roof-2</position>
+		<position>roof-3</position>
+		<position>roof-4</position>
+		<position>roof-5</position>
+		<position>roof-6</position>
+		<position>logo-menu</position>
+		<position>navhelper</position>
+		<position>breadcrumbs</position>
+		<position>off-canvas</position>
+		<position>sidebar-1</position>
+		<position>sidebar-2</position>
+		<position>mast-col</position>
+		<position>footer</position>
+		<position>home-0</position>
+		<position>home-1</position>
+		<position>home-2</position>
+		<position>home-3</position>
+		<position>home-4</position>
+		<position>home-5</position>
+		<position>position-0</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-6</position>
+		<position>position-7</position>
+		<position>position-8</position>
+		<position>position-9</position>
+		<position>position-10</position>
+		<position>position-11</position>
+		<position>position-12</position>
+		<position>position-13</position>
+		<position>position-14</position>
+		<position>position-15</position>
+		<position>footer-widget</position>
+		<position>footer-top-1</position>
+		<position>footer-top-2</position>
+		<position>footer-top-3</position>
+		<position>footer-top-4</position>
+		<position>footer-top-5</position>
+		<position>footer-top-6</position>
+		<position>footer-0</position>
+		<position>footer-1</position>
+		<position>footer-2</position>
+		<position>footer-3</position>
+		<position>footer-4</position>
+		<position>footer-5</position>
+		<position>footer-6</position>
+		<position>footer-7</position>
+		<position>footer-8</position>
+		<position>footer-9</position>
+		<position>footer-10</position>
+		<position>debug</position>
+		<position>groundfloor</position>
+		<position>head-search</position>
+		<position>languageswitcherload</position>
+		<position>header-top-right</position>
+	</positions>
+
+	<config>
+		<fields name="params" addfieldpath="/templates/tx_morph/admin/fields">
+
+			<!-- Sample for add or disable template parameters -->
+			<fieldset name="menu_params" label="TPL_OPTIONS">
+				<field name="theme_option" type="t3depend" function="@group">
+					<option for="box_layout" value="1" hide="1">
+						box_layout_img, box_image_or_color, box_layout_bg_color, box_layout_width
+					</option>
+					<option for="box_image_or_color" value="bg_color" hide="box_layout_img">
+						box_layout_bg_color
+					</option>
+					<option for="box_image_or_color" value="bg_img" hide="box_layout_bg_color">
+						box_layout_img
+					</option>
+					<option for="box_image_or_color" value="0" hide="0">
+						box_layout_bg_color
+					</option>
+					<option for="box_image_or_color" value="1" hide="1">
+						box_layout_img
+					</option>
+					<option for="video_bg_enable" value="1" hide="1">
+						video_bg_class, video_poster, ytb_video_id
+					</option>
+					<option for="social_enable" value="1" hide="1">
+						facebook, twitter, linkedin, google-plus, dribbble, pinterest, behance, youtube
+					</option>
+					<option for="custom_error_page" value="1" hide="1">
+						error_page
+					</option>
+					<option for="custom_comingsoon_page" value="1" hide="1">
+						comingsoon_page
+					</option>
+					<option for="enable_copyright" value="1" hide="1">
+						copyright_text
+					</option>
+				</field>
+
+				<field name="tpl_global" type="t3depend" function="@legend" label="Global"/>
+
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_preloader"
+						default="1"
+						label="Preloader"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="radio"
+						class="btn-group"
+						name="go_to_top"
+						default="0"
+						label="Go To Top"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+						type="radio"
+						name="addon_offcanvas_pos"
+						class="btn-group"
+						default="0"
+						label="Off-canvas Position (Right)"
+				>
+					<option value="0">Left</option>
+					<option value="1">Right</option>
+				</field>
+				<field
+						type="radio"
+						class="btn-group"
+						name="fixed_footer"
+						default="0"
+						label="Fixed Footer"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="tpl_header_variation" type="t3depend" function="@legend" label="Header"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="header_transparent"
+						default="0"
+						label="Transparent Header"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+						type="radio"
+						class="btn-group"
+						name="nav_sticky"
+						default="1"
+						label="Sticky Header"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="media"
+						name="favicon_upload"
+						label="Upload Favicon"
+				/>
+				<field
+						type="headerlist"
+						class="btn-group"
+						name="header_variation"
+						default="default.php"
+						label="Header Variation"
+						filter=".php"
+						exclude=""
+						stripext="true"
+						hide_default="true"
+						hide_none="true"
+						onchange="getHeaderPreview();"
+				/>
+				<field
+						type="menuitem"
+						class="btn-group"
+						name="searchmenuitemid"
+						label="Search Menu ID"
+				/>
+
+				<field name="tpl_social_title" type="t3depend" function="@legend" label="Header Social Profile"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="social_enable"
+						default="0"
+						label="Enable Social"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+						type="text"
+						name="facebook"
+						label="Facebook URL"
+						placeholder="https://facebook.com/themexpert"
+				/>
+				<field
+						type="text"
+						name="twitter"
+						label="Twitter URL"
+						placeholder="https://twitter.com/themexpert"
+				/>
+				<field
+						type="text"
+						name="linkedin"
+						label="Linkedin URL"
+				/>
+				<field
+						type="text"
+						name="google-plus"
+						label="Google Plus URL"
+				/>
+				<field
+						type="text"
+						name="dribbble"
+						label="Dribbble URL"
+						placeholder="https://dribbble.com/themexpert"
+				/>
+				<field
+						type="text"
+						name="pinterest"
+						label="Pinterest URL"
+				/>
+				<field
+						type="text"
+						name="behance"
+						label="Behance URL"
+				/>
+				<field
+						type="text"
+						name="youtube"
+						label="YouTube URL"
+						placeholder="https://www.youtube.com/user/ThemeXpert"
+				/>
+
+				<field name="box_layout_title" type="t3depend" function="@legend" label="Boxed Layout"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="box_layout"
+						default="0"
+						label="TPL_OPTIONS_ENABLE_BOX_LAYOUT"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="radio"
+						class="btn-group"
+						name="box_image_or_color"
+						default="0"
+						label="Background Image and Color"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="list"
+						class="btn-group"
+						name="box_layout_img"
+						default=""
+						label="Background Image"
+				>
+					<option value="bg_1.png">Image 1</option>
+					<option value="bg_2.png">Image 2</option>
+					<option value="bg_3.png">Image 3</option>
+					<option value="bg_4.png">Image 4</option>
+					<option value="bg_5.jpg">Image 5</option>
+				</field>
+				<field
+						type="color"
+						class=""
+						name="box_layout_bg_color"
+						default=""
+						label="Background Color"
+				>
+				</field>
+				<field
+						type="text"
+						class=""
+						name="box_layout_width"
+						default="90%"
+						label="Box Width"
+						description="By default it is 90%. You can use %, px, em etc."
+				>
+				</field>
+
+				<field name="tpl_video_bg_title" type="t3depend" function="@legend" label="Video Background"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="video_bg_enable"
+						default="0"
+						label="Enable Video Background"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+						type="text"
+						name="video_bg_class"
+						label="Video Background Class"
+				/>
+
+				<field
+						type="media"
+						name="video_poster"
+						label="Video Poster"
+				/>
+				<field
+						type="text"
+						name="ytb_video_id"
+						label="YouTube Video ID"
+						description="Go to youtbe Share/Embed section and copy the video ID. Eg. https://youtu.be/gkp__bUoNaw. Here, ID should be 'gkp__bUoNaw'"
+				/>
+
+				<field name="tpl_copyright_title" type="t3depend" function="@legend" label="TPL_COPYRIGHT_LABEL"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_copyright"
+						default="1"
+						label="Enable Copyright Area"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="textarea"
+						class="copyright"
+						name="copyright_text"
+						label="TPL_OPTIONS_COPYRIGHT_TEXT"
+						filter="raw"
+						default="Copyright &#xA9; 2017 Joomla Template. All Rights Reserved. Design &#x26; Developed by &#x3C;a href=&#x27;https://www.themexpert.com/&#x27; title=&#x27;ThemeXpert&#x27;&#x3E;ThemeXpert&#x3C;/a&#x3E;"
+				/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="tx_credit"
+						default="1"
+						label="Show ThemeXpert Credit?"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="error_page_title" type="t3depend" function="@legend" label="Error Page"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="custom_error_page"
+						default="0"
+						label="Custom Error Page"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="menuitem"
+						class="btn-group"
+						name="error_page"
+						label="Error Menu"
+				/>
+
+				<field name="comingsoon_page_title" type="t3depend" function="@legend" label="Coming Soon Page"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="custom_comingsoon_page"
+						default="0"
+						label="Coming Soon Page"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="menuitem"
+						class="btn-group"
+						name="comingsoon_page"
+						label="Coming Soon Menu"
+				/>
+
+			</fieldset>
+
+			<fieldset name="typography_params" label="Typography">
+				<field type="asset" />
+				<field name="typography_option" type="t3depend" function="@group">
+					<option for="enable_body_font" value="1" hide="1">body_font</option>
+					<option for="enable_h1_font" value="1" hide="1">h1_font</option>
+					<option for="enable_h2_font" value="1" hide="1">h2_font</option>
+					<option for="enable_h3_font" value="1" hide="1">h3_font</option>
+					<option for="enable_h4_font" value="1" hide="1">h4_font</option>
+					<option for="enable_h5_font" value="1" hide="1">h5_font</option>
+					<option for="enable_h6_font" value="1" hide="1">h6_font</option>
+					<option for="enable_navigation_font" value="1" hide="1">navigation_font</option>
+				</field>
+
+				<field name="update_fonts" type="button" url="#" text="One Click update" label="Update Fonts List"  class="btn-primary btn-update-fonts-list" />
+
+				<field name="body_font_options_title" type="t3depend" function="@legend" label="Body Font"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_body_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="body_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="heading1_font_options_title" type="t3depend" function="@legend" label="Heading1 Font"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_h1_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="h1_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="heading2_font_options_title" type="t3depend" function="@legend" label="Heading2 Font" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_h2_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="h2_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="heading3_font_options_title" type="t3depend" function="@legend" label="Heading3 Font" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_h3_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="h3_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="heading4_font_options_title" type="t3depend" function="@legend" label="Heading4 Font" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_h4_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="h4_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="heading5_font_options_title" type="t3depend" function="@legend" label="Heading5 Font" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_h5_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="h5_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="heading6_font_options_title" type="t3depend" function="@legend" label="Heading6 Font" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_h6_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="h6_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+
+				<field name="navigation_font_options_title" type="t3depend" function="@legend" label="Navigation Font" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="enable_navigation_font"
+						default="0"
+						label="Enable"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						type="typography"
+						class="btn-group"
+						name="navigation_font"
+						default=""
+						label="Select Font"
+				>
+				</field>
+			</fieldset>
+
+			<fieldset name="blog_params" label="Blog">
+
+				<field name="blog_option" type="t3depend" function="@group">
+					<option for="show_comments" value="1" hide="1">commenting_engine,comments_count</option>
+					<option for="commenting_engine" value="facebook" show="1">fb_appID,fb_width,fb_cpp</option>
+					<option for="commenting_engine" value="disqus" show="1">disqus_subdomain,disqus_devmode</option>
+				</field>
+
+				<field name="post_format_title" type="t3depend" function="@legend" label="Post Format"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="show_post_format"
+						default="0"
+						label="Show Icon"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="comments_title" type="t3depend" function="@legend" label="Comments Settings"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="show_comments"
+						default="0"
+						label="Show Comments"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+						type="list"
+						class="btn-group"
+						name="commenting_engine"
+						default=""
+						label="Commenting Engine"
+						description="Choose which commenting engine will be used for blog post. Select disable in order to hide comments from joomla article."
+				>
+					<option value="disqus">Disqus</option>
+					<option value="facebook">Facebook</option>
+				</field>
+
+				<field name="fb_appID" type="text" label="Facebook Application ID" description="Set the Facebook Application ID, visit https://developers.facebook.com/apps to get application id"/>
+				<field name="fb_width" type="number" default="500" label="Comments Width" description="Width of the comments plugin in pixel, eg. 500. Note: Facebook doesn't provide a Facebook Comment code for responsive (fluid grid) websites. It uses only static width for comments box."/>
+				<field name="fb_cpp" type="number" default="10" label="Comments Per Page" description="Set the number of comments to displayed per page"/>
+
+				<field name="disqus_subdomain" type="text" label="Disqus Username/Subdomain" description=""/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="disqus_devmode"
+						default="0"
+						label="Disqus Developer Mode"
+						description=""
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+						type="radio"
+						class="btn-group"
+						name="comments_count"
+						default="0"
+						label="Comments Count"
+						description="Show comments count on blog view or frontpage"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="social_share_title" type="t3depend" function="@legend" label="Social Share"/>
+				<field
+						type="radio"
+						class="btn-group"
+						name="social_share"
+						default="0"
+						label="Enable Social Share"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+		</fields>
+	</config>
+
+	<updateservers>
+		<!-- Note: No spaces or linebreaks allowed between the server tags -->
+		<server type="extension" priority="1" name="Joomla Template Update Site"><![CDATA[https://www.themexpert.com/index.php?option=com_digicom&task=responses&source=release&format=xml&provider=joomla&pid=193]]></server>
+	</updateservers>
+
+</extension>

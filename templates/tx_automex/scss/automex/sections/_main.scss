@@ -1,0 +1,23 @@
+#g-mainbar {
+    background: $base-background;
+    color: $base-text-color;
+    padding: $section-padding 0;
+}
+
+#g-main {
+	.g-content {
+		.platform-content {
+			.row > * {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+@media print {
+	#g-main {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

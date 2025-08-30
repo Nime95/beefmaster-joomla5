@@ -1,0 +1,76 @@
+/**
+ * Changelog
+ *
+ * @package     plg_system_kickgdpr
+ * @author      Kicktemp GmbH <hello@kicktemp.com>
+ * @copyright   Copyright © 2021 Kicktemp GmbH. All rights reserved.
+ * @license     GNU General Public License version 3 or later; see LICENSE.txt
+ * @link        https://kicktemp.com<
+ */
+
+/**
+ * + Addition
+ * ! Removal
+ * ^ Change
+ * # Fix
+ */
+
+11-Nov-2021 : v4.0.1
+ # fix Joomla 4 install script
+
+23-Aug-2021 : v4.0.0
+ + add Joomla 4 support
+ + add disable privacy badge, must be configured!
+ ^ change minimum Joomla version to 4.0.0 and PHP minimum to 7.2.5
+
+23-Aug-2021 : v3.4.0
+ + add Joomla 3.10 support
+ + add disable privacy badge, must be configured!
+
+25-November-2019 : v3.3.0
+ + add Page Refresh Option. onStatusChange the page reloads
+ + add Google Tag Manager
+
+07-November-2019 : v3.2.0
+ + add Statistics Function. Help us to make KickGDPR even better and send the Joomla version, PHP version and the domain to our update server. <b style="color: green">Activate send statistics in the Plugin tab of the KickGDPR plugin.</b>
+ + add Changelog Tab Overview
+ ^ change Google Analytics variable from __kickgaTracker to ga (Google Analytics Default variable)
+
+02-October-2019 : v3.1.0
+ + add new imprint feature (you will love it)
+ + add support tab
+ ^ Update cookieconsent.min.css and cookieconsent.min.js to v3.1.1 (lodash security issue), thanks osano
+ ^ Unification and simplification of some language strings
+ # support quotes in text strings (addslashes)
+
+29-May-2019 : v3.0.3
+ # fix Update-Loop, missing new Versionnumber
+
+27-May-2019 : v3.0.2
+ # fix RSS-Feed Error with JDocument in Plugin constructor
+ # Revision of the language file with regard to any necessary adaptations for opt-out or opt-in. Thanks for user feedback from nuremberg.
+
+10-Apr-2019 : v3.0.1
+ # fix JavaScript Error with Matomo
+
+10-Apr-2019 : v3.0.0
+ + Add native Matomo analytics support
+ ^ Move Updateserver (update.xml) from github to https://Kicktemp.shop
+
+28-Feb-2019 : v2.5.3
+ # fix version number
+
+28-Feb-2019 : v2.5.2
+ ^ Change from Kicktemp UG (limited liability) to Kicktemp GmbH. Woop woop.
+ ^ Update translation for german speaking users
+
+05-Feb-2019 : v2.5.1
+ + Add Standard Events to Facebook-Pixel Tab
+
+25-Jan-2019 : v2.5.0
+ + Add Changelog-Feature
+ ^ Update cookieconsent.min.css and cookieconsent.min.js to v3.1.0
+ # code styling, author, license link, year
+
+17-Jul-2018 : v2.4.0
+ ^ This is the first version under the newly founded company Kicktemp UG (limited liability). In this step, we just moved the repository from https://github.com/nielsnuebel/kickgdpr to https://github.com/kicktemp/kickgdpr.

@@ -1,0 +1,32 @@
+name: Navigation Colors
+description: Navigation colors for the Automex template
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#130f40"
+    text-hover-color:
+      type: input.colorpicker
+      label: Text Hover
+      default: "#e53e29"      
+    dropdown-bg:
+      type: input.colorpicker
+      label: Dropdown Background
+      default: "#ffffff"
+    dropdown-text:
+      type: input.colorpicker
+      label: Dropdown Text
+      default: "#130f40"
+    overlay:
+      type: input.colorpicker
+      label: Overlay
+      description: Set the color of the page overlay when the certain menu modes are active.
+      default: "rgba(0, 0, 0, 0.4)"      

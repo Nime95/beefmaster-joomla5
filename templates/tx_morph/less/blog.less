@@ -1,0 +1,256 @@
+//Blog
+.com_content.view-category.layout-blog,
+.com_content.view-article {
+  .t3-mainbody {
+    background: #f5f5f5;
+      article {
+        aside.article-aside {
+          .icons {
+            .edit-link {
+              a {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+              }
+            }
+          }
+        }
+      }
+  }
+}
+
+.com_content.view-category{
+  article.item {
+    background: #fff;
+    box-shadow: @default-box-shadow;
+    min-height: 364px;
+  }
+  .entry-image, .entry-gallery, .entry-video,
+  .entry-audio, .entry-link, .entry-status, .entry-quote {
+    margin-bottom: 0px;
+  }
+  .entry-header {
+    // margin-bottom: 0px;
+  }
+}
+.com_content.view-category {
+  .cat-children {
+    background: #fff;
+    padding: 0 15px;
+    box-shadow: 0px 0px 76px 0px rgba(231, 231, 231, 0.66);
+  }
+}
+
+.blog-content {
+  padding: 24px;
+  // font-size: 20px;
+}
+article.item {
+  h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+}
+.view-article {
+  article.item {
+    margin-bottom: 20px;
+
+    .article-title {
+      margin-bottom: 18px;
+    }
+
+    p, h1, h2, h3, h4, h5, h6, figure, ul {
+      margin-bottom: 25px;
+    }
+    figure {
+      figcaption {
+        font-size: 14px;
+        font-style: italic;
+      }
+      &.pull-left {
+        margin-right: 25px;
+      }
+      &.pull-right {
+        margin-left: 25px;
+      }
+    }
+  }
+  .pagenav {
+    margin-top: 40px;
+    li {
+      > a {
+        //border-color: @brand-primary;
+        border-radius: @border-radius-large;
+        padding: 10px 24px;
+
+        &:hover, &:focus  {
+          //background: @brand-primary;
+          color: #fff;
+        }
+      }
+      &.next {
+        float: right;
+      }
+    }
+  }
+}
+.layout-blog {
+  .readmore {
+    margin-top: 30px;
+  }
+  // .pagination {
+  //   > li {
+  //     &.disabled {
+  //       > a {
+  //         color: @brand-primary;
+  //         border-color: @brand-primary;
+  //       }
+  //     }
+  //     > a, > span {
+  //       &:hover, &:focus {
+  //         color: #fff;
+  //         background-color: @brand-primary;
+  //         border-color: @brand-primary;
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+.pagination {
+  text-align: center;
+  float: none;
+  margin-bottom: 0;
+
+  > li {
+    display: inline-block;
+    &.disabled > a,
+    > a, > span {
+      border-color: transparent !important;
+      border-bottom: 1px solid #ddd !important;
+      color: @text-color;
+      background: transparent;
+      border-radius: 0;
+      &:hover {
+        background: @brand-primary;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    &.active {
+      a {
+        border-bottom-color: @brand-primary !important;
+      }
+
+    }
+  }
+}
+
+.pager.pagenav {
+  li {
+    a {
+      background: transparent;
+      &:hover {
+        background: @brand-primary;
+      }
+    }
+  }
+}
+
+.com_content.view-article {
+  .article-info {
+    line-height: 12px;
+    // text-align: center;
+    width: 100%;
+  }
+  article.item h2 {
+    font-size: 46px;
+    margin-top: 0;
+    font-weight: bold;
+    // text-align: center;
+    line-height: 1.2;
+  }
+  .article-body-text {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+
+
+
+
+
+
+
+//Blog Sidebar
+.entry-header {
+  h2 {
+    a {
+      &:hover {
+        color: @brand-primary;
+      }
+    }
+  }
+}
+.t3-sidebar {
+  padding-top: 0;
+  .search {
+    input.form-control {
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+  .module-title {
+    color: @headings-color;
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .latestnews, .mostread {
+    li {
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid #e8e8e8;
+
+      a {
+        color: @text-color;
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+    }
+  }
+}
+
+
+
+/**
+* List Layout
+*/
+.layout-tx_morphxblog {
+  .row.blog-item:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  .row.blog-item {
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0px 0px 76px 0px rgba(231, 231, 231, 0.66);
+  }
+  .entry-image {
+    margin-bottom: 0;
+    margin-left: -15px;
+    // margin-top: -15px;
+    // margin-bottom: -15px;
+  }
+  .article-title {
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,15 @@
+name: Above Styles
+description: Above section styles for the Automex template
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#e53e29"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#130f40"

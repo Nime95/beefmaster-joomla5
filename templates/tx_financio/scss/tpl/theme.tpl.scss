@@ -1,0 +1,339 @@
+// Function, variables
+@import "../vars";
+
+// Theme Customize
+@import "../../../../plugins/system/t4/themes/base/scss/theme.tpl";
+
+.badge {
+    &.badge-info {
+      background-color: __link_hover_color;
+      &:hover {
+        background-color: __color_primary;
+      }
+    }
+}
+.page-header, .categories-list {
+    h2 {
+      a {
+        &:hover, &:focus, &:active {
+            color: __color_primary;
+        }
+      }
+    }
+}
+
+.qx-btn {
+  &.qx-btn-primary {
+    background-color: __color_primary;
+    border-color: __color_primary;
+
+    &:hover {
+      background-color: __link_hover_color;
+      border-color: __link_hover_color;
+    }    
+  }
+}
+
+/*
+* ***********************
+* For Header and Top bar
+* ***********************
+*/
+
+#t4-top-bar {
+    &.header1 {  
+      .top-bar-socian-icon {
+        ul {
+          li {
+            a {
+              color: __body_text_color;
+  
+              &:hover {
+                color: __color_primary;
+              }
+            }
+          }
+        }
+      }
+  
+      // Quix
+      .topbar-contact-info {
+        .qx-element-blurb-v2 {
+          figure {
+            svg {
+              path {
+                  fill: __color_primary;
+              }
+            }
+          }
+        }
+      }
+  
+      .topbar-social-icons {
+        .qx-element-social-icon {
+          ul {
+            li {
+              a {
+                color: __body_text_color;
+  
+                &:hover {
+                  color: __color_primary;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+
+#t4-header {
+    &.header1 {
+      #t4-megamenu-mainmenu {
+        ul.navbar-nav {
+          >li {
+            >a {
+              color: __link_hover_color;        
+  
+              &:hover {
+                color: __color_primary;
+              }
+            }
+  
+            &.active {
+              >a {
+                color: __color_primary;
+              }
+            }
+          }
+        }
+      }
+      .button-quote-header1 {
+        .qx-element-button-v2 {
+          a.qx-btn-primary {
+            background-color: __color_primary;
+            border-color: __color_primary;
+  
+            &:hover {
+              background-color: __link_hover_color;
+              border-color: __link_hover_color;
+            }
+          }
+        }
+      }
+    }
+  
+    &.header2 {
+
+      // Quix
+      .topbar2-contact-info {
+        .qx-element-blurb-v2 {
+          figure {
+            svg {
+              path {
+                  fill: __color_primary;
+              }
+            }
+          }
+          .qx-element-blurb__title {
+            color: __link_hover_color;
+          }
+        }      
+      }
+    }
+  }
+
+  /*
+  * ***********
+  * For Navbar
+  * ***********
+  */
+  
+  #t4-mainnav {
+    &.header2 {
+        .container {
+          background-color: __color_primary;
+        }
+      
+      .header_2_get_quote {
+        a {
+          color: __color_primary;
+    
+          &:hover {
+            background-color: __link_hover_color;
+            border-color: __link_hover_color;
+          }      
+        }        
+      }  
+      
+      .button-quote-header2 {
+        .qx-element-button-v2 {
+          a.qx-btn-primary {
+            color: __color_primary;
+  
+            &:hover {
+                background-color: __link_hover_color;
+                border-color: __link_hover_color;
+            }
+          }
+        }      
+      }
+    }
+  }
+
+  /*
+  * **************
+  * For Footer
+  * **************
+  */
+
+  #t4-footer {
+    .qx-element-image-v2 {
+      &.logo-footer {
+        svg {
+          .logo {
+            fill: __color_primary;
+          }
+        }
+      }
+    }
+    .qx-element-social-icon {
+      &.social-footer {
+        ul {
+          li {
+            a {
+              i {
+                &:hover {
+                  background-color: __color_primary;
+                }
+              }
+            }
+          }
+        }
+      }
+    }      
+  }  
+
+  /*
+  * **************
+  * For Copyright
+  * **************
+  */
+  
+  #t4-copyright {
+    background-color: __link_hover_color;
+  }
+
+  /*
+  * *************
+  * Blog
+  * *************
+  */
+  
+  .com_content {
+    &.view-category {
+      .blog {
+        .items-leading {  
+          .blog-item-content {
+            .item-content {
+              .readmore {
+                a.btn-readmore {
+                  background-color: __color_primary;
+
+                  &:hover {
+                    background-color: __link_hover_color;
+                  }
+                }
+              }         
+            }                    
+          }       
+        }
+  
+        .items-row {
+          .item {
+            .item-content {
+              .readmore {
+                a.btn-readmore {
+                  background-color: __color_primary;
+
+                  &:hover {
+                    background-color: __link_hover_color;
+                  }
+                }
+              }
+            }          
+          }        
+        }      
+      }
+    }
+  }
+
+/*
+* ***************
+* Sidebar Module
+* ***************
+*/
+
+.sidebar-r {
+  .tagspopular {
+    ul {
+      >li {
+
+        &:hover {
+          background-color: __color_primary;        
+        }        
+
+
+        a {
+          color: __body_text_color;
+        }
+      }      
+    }
+  }
+
+  .mod_latest_articles {
+    li {
+      a {
+        &:hover {color: __color_primary;}
+      }  
+    }
+  }  
+}
+
+/*
+* *************
+* Pagination
+* *************
+*/
+
+.pagination {
+  li.page-item {
+    a.page-link {
+      color: __link_hover_color;
+
+      &:hover {
+        background-color: __color_primary;
+        border-color: __color_primary;
+      }      
+    }
+
+    &.active {
+      a.page-link {
+        border-color: __color_primary;
+        background-color: __color_primary;
+      }
+    }
+  }
+}
+
+.pager {
+  &.pagenav {
+    li {
+      a {     
+        &:hover {
+          background-color: __color_primary;
+        }
+      }
+    }
+  }
+}

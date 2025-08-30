@@ -1,0 +1,1 @@
+window.pkg_quix_public_path=`${window.quix.url}/index.php?version=${window.quix.version}&quix-asset=`,pkg_quix_public_path;

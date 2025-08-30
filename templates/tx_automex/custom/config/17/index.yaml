@@ -1,0 +1,40 @@
+name: 17
+timestamp: 1662257290
+version: 7
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: quix
+  timestamp: 1651560790
+positions:
+  topbar-right: 'Module Position'
+  footer: 'Module Position'
+sections:
+  topbar: Topbar
+  navigation: Navigation
+  contentbottom: Contentbottom
+  copyright: Copyright
+  header: Header
+  main: Main
+  footer: Footer
+  offcanvas: Offcanvas
+particles:
+  social:
+    social-8812: Social
+    social-9176: Social
+  position:
+    position-position-1937: 'Module Position'
+    position-position-6269: 'Module Position'
+  menu:
+    menu-9266: Menu
+    menu-7583: Menu
+  logo:
+    logo-5836: 'Logo / Image'
+  messages:
+    system-messages-5477: 'System Messages'
+  content:
+    system-content-1161: 'Page Content'
+  copyright:
+    copyright-4571: Copyright
+  mobile-menu:
+    mobile-menu-8586: Mobile-menu
+inherit: {  }

@@ -1,0 +1,48 @@
+preset: preset1
+base:
+  background: '#ffffff'
+  text-color: '#afa177'
+accent:
+  color-1: '#afa177'
+  color-2: '#ffffff'
+font:
+  family-default: Silka
+  family-title: Silka
+link:
+  regular: '#272de6'
+  hover: '#130f40'
+topbar:
+  background: '#afa177'
+  text-color: '#ffffff'
+navigation:
+  text-color: '#afa177'
+  text-hover-color: '#afa177'
+  dropdown-bg: '#ffffff'
+  dropdown-text: '#130f40'
+header:
+  background: '#ffffff'
+  background-overlay: enabled
+  text-color: '#afa177'
+intro:
+  text-color: '#130f40'
+features:
+  text-color: '#130f40'
+utility:
+  text-color: '#130f40'
+above:
+  background: '#afa177'
+  text-color: '#afa177'
+testimonials:
+  text-color: '#afa177'
+expanded:
+  background: '#afa177'
+main:
+  background: '#ffffff'
+  text-color: '#afa177'
+footer:
+  background: '#afa177'
+  text-color: '#ffffff'
+offcanvas:
+  toggle-color: '#130f40'
+menu:
+  animation: g-dropdown-bounce-in-left

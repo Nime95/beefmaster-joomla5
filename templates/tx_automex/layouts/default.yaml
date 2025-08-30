@@ -1,0 +1,220 @@
+version: 2
+
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+
+layout:
+  /topbar/:
+    -
+      - 'social-8812 45'
+      - 'social-6649 33'
+      - 'social-9176 22'
+
+  /header/:
+    -
+      - 'logo-5836 50'
+      - 'position-position-3473 50'
+
+  /navigation/:
+    -
+      - 'menu-9266 75'
+      - 'position-position-2908 25'
+
+  /pagetitle/:
+    -
+      - position-position-6650
+
+  /container-main/:
+    -
+      -
+        'main 70':
+          -
+            - position-breadcrumbs
+          -
+            - system-messages-5477
+          -
+            - system-content-1161
+      -
+        'sidebar 30':
+          -
+            - position-position-8049
+
+  /footer/:
+    -
+      - position-position-6269
+
+  /copyright/:
+    -
+      - copyright-4571      
+
+  offcanvas:
+    -
+      - mobile-menu-2000
+
+structure:
+  topbar:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  contentbottom:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+  offcanvas:
+    attributes:
+      position: g-offcanvas-right
+      class: ''
+      extra: {  }
+      swipe: '1'
+      css3animation: '1'
+content:
+  social-8812:
+    attributes:
+      css:
+        class: ''
+      items:
+        -
+          icon: ''
+          text: About
+          title: ''
+          link: '#'
+          name: About
+        -
+          icon: ''
+          text: 'Our Stores'
+          title: ''
+          link: '#'
+          name: 'Our Stories'
+        -
+          icon: ''
+          text: Blog
+          title: ''
+          link: '#'
+          name: Blog
+        -
+          icon: ''
+          text: Contact
+          title: ''
+          link: '#'
+          name: Contact
+        -
+          icon: ''
+          text: FAQ
+          title: ''
+          link: '#'
+          name: FAQ
+    block:
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom'
+  social-6649:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-map-marker'
+          text: 'Find us'
+          title: 'Find us'
+          link: '#'
+          name: 'Find us'
+        -
+          icon: 'fa fa-question-circle'
+          text: 'Create Account'
+          title: 'Create Account'
+          link: '#'
+          name: 'Create Account'
+        -
+          icon: 'fa fa-user-circle'
+          text: Login
+          title: Login
+          link: '#'
+          name: Login
+    block:
+      variations: 'align-right nomarginall nopaddingall'
+  social-9176:
+    attributes:
+      display: icons_only
+      items:
+        -
+          icon: 'fa fa-facebook'
+          text: ''
+          title: ''
+          link: ''
+          name: Facebook
+        -
+          icon: 'fa fa-twitter'
+          text: ''
+          title: ''
+          link: ''
+          name: Twitter
+        -
+          icon: 'fa fa-linkedin'
+          text: ''
+          title: ''
+          link: ''
+          name: Linkedin
+        -
+          icon: 'fa fa-google-plus'
+          text: ''
+          title: ''
+          link: ''
+          name: GooglePlus
+        -
+          icon: 'fa fa-dribbble'
+          text: ''
+          title: ''
+          link: ''
+          name: Dribbble
+    block:
+      variations: 'align-right nomargintop nomarginbottom nopaddingbottom nopaddingtop'
+  logo-5836:
+    title: 'Logo / Image'
+    block:
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom'
+  position-position-3473:
+    title: 'Module Position'
+    attributes:
+      key: header-search
+    block:
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom nopaddingright'
+  menu-9266:
+    block:
+      variations: 'nomargintop nomarginbottom'
+  position-position-2908:
+    title: 'Module Position'
+    attributes:
+      key: navigation-button
+    block:
+      variations: 'nomargintop nomarginbottom'
+  position-breadcrumbs:
+    attributes:
+      key: breadcrumbs
+  position-position-6269:
+    title: 'Module Position'
+    attributes:
+      key: footer
+    block:
+      variations: nomarginall
+  copyright-4571:
+    block:
+      variations: center

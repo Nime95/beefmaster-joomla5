@@ -1,0 +1,193 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set linkType = general.video_fg_text.link_type %}
+{% set videoLink = general.video_fg_text.video_link %}
+{% set controls = general.video_fg_text.controls %}
+{% set autoplay = general.video_fg_text.autoplay %}
+{% set mute = general.video_fg_text.mute %}
+{% set loop = general.video_fg_text.loop %}
+{% set isGdprComplianceOn = isGdprComplianceEnabled() %}
+
+{# video options #}
+{% set src = general.video_fg_text.custom_video %}
+{% set videoPoster = general.video_fg_text.video_poster %}
+{% set videoId = "video-" ~ advanced.identifier.id %}
+{% set tags = ' crossorigin' %}
+
+{# Overlay #}
+{% set enableOverlay = general.video_fg_text.enable_overlay %}
+{% set ovImg = general.video_fg_text.overlay_img %}
+{% set playIcon = general.video_fg_text.play_icon %}
+{% set pIcon = general.video_fg_text.upload_Picon %}
+{% if controls %}
+    {% set tags = tags ~ ' controls' %}
+{% endif %}
+{% if loop %}
+    {% set tags = tags ~ ' loop' %}
+{% endif %}
+{% set option = '' %}
+{% if autoplay %}
+    {% set option = option ~ 'autoplay:true;' %}
+{% else %}
+    {% set option = option ~ 'autoplay:false;' %}
+{% endif %}
+{% if mute %}
+    {% set option = option ~'automute: true' %}
+{% endif %}
+{% set alignment = general.video_fg_text.alignment %}
+{% set tags = tags ~ ' qx-video="'~option~'"' %}
+{% set classes = classNames('qx-element qx-element-video-v2 qx-clearfix', visibilityClass(visibility), class) %}
+{% set wrapperClasses = 'qx-position-relative qx-align-' ~ alignment %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% set srcAttr = 'src' %}
+
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+      {% if isGdprComplianceOn and renderer %}
+        {% set videoMarkUp = video(id, general.video_fg_text) %}
+        <div
+          style="background-color: oklch(0.971 0.013 17.38); padding: 18px; margin: 15px; border: 1px solid oklch(0.885 0.062 18.334); border-radius: 4px;"
+        >
+            <div>
+              <svg style="margin-left: -12px" xmlns="http://www.w3.org/2000/svg" width="120" xml:space="preserve" y="0" x="0" id="Layer_1" version="1.1" viewBox="-57.15 -21.25 495.3 127.5"><style id="style7427" type="text/css">.st2{fill:#282828}</style><g id="g7433"><path id="path7429" d="M118.9 13.3c-1.4-5.2-5.5-9.3-10.7-10.7C98.7 0 60.7 0 60.7 0s-38 0-47.5 2.5C8.1 3.9 3.9 8.1 2.5 13.3 0 22.8 0 42.5 0 42.5s0 19.8 2.5 29.2C3.9 76.9 8 81 13.2 82.4 22.8 85 60.7 85 60.7 85s38 0 47.5-2.5c5.2-1.4 9.3-5.5 10.7-10.7 2.5-9.5 2.5-29.2 2.5-29.2s.1-19.8-2.5-29.3z" fill="red"/><path id="polygon7431" fill="#fff" d="M48.6 24.3v36.4l31.6-18.2z"/></g><g id="g7451"><g id="g7449"><path id="path7435" d="M176.3 77.4c-2.4-1.6-4.1-4.1-5.1-7.6-1-3.4-1.5-8-1.5-13.6v-7.7c0-5.7.6-10.3 1.7-13.8 1.2-3.5 3-6 5.4-7.6 2.5-1.6 5.7-2.4 9.7-2.4 3.9 0 7.1.8 9.5 2.4 2.4 1.6 4.1 4.2 5.2 7.6 1.1 3.4 1.7 8 1.7 13.8v7.7c0 5.7-.5 10.2-1.6 13.7-1.1 3.4-2.8 6-5.2 7.6-2.4 1.6-5.7 2.4-9.8 2.4-4.2-.1-7.6-.9-10-2.5zm13.5-8.4c.7-1.7 1-4.6 1-8.5V43.9c0-3.8-.3-6.6-1-8.4-.7-1.8-1.8-2.6-3.5-2.6-1.6 0-2.8.9-3.4 2.6-.7 1.8-1 4.6-1 8.4v16.6c0 3.9.3 6.8 1 8.5.6 1.7 1.8 2.6 3.5 2.6 1.6 0 2.7-.8 3.4-2.6z" class="st2"/><path id="path7437" d="M360.9 56.3V59c0 3.4.1 6 .3 7.7.2 1.7.6 3 1.3 3.7.6.8 1.6 1.2 3 1.2 1.8 0 3-.7 3.7-2.1.7-1.4 1-3.7 1.1-7l10.3.6c.1.5.1 1.1.1 1.9 0 4.9-1.3 8.6-4 11-2.7 2.4-6.5 3.6-11.4 3.6-5.9 0-10-1.9-12.4-5.6-2.4-3.7-3.6-9.4-3.6-17.2v-9.3c0-8 1.2-13.8 3.7-17.5 2.5-3.7 6.7-5.5 12.6-5.5 4.1 0 7.3.8 9.5 2.3 2.2 1.5 3.7 3.9 4.6 7 .9 3.2 1.3 7.6 1.3 13.2v9.1h-20.1zm1.5-22.4c-.6.8-1 2-1.2 3.7-.2 1.7-.3 4.3-.3 7.8v3.8h8.8v-3.8c0-3.4-.1-6-.3-7.8-.2-1.8-.7-3-1.3-3.7-.6-.7-1.6-1.1-2.8-1.1-1.4-.1-2.3.3-2.9 1.1z" class="st2"/><path id="path7439" d="M147.1 55.3L133.5 6h11.9l4.8 22.3c1.2 5.5 2.1 10.2 2.7 14.1h.3c.4-2.8 1.3-7.4 2.7-14l5-22.4h11.9L159 55.3v23.6h-11.8V55.3z" class="st2"/><path id="path7441" d="M241.6 25.7V79h-9.4l-1-6.5h-.3c-2.5 4.9-6.4 7.4-11.5 7.4-3.5 0-6.1-1.2-7.8-3.5-1.7-2.3-2.5-5.9-2.5-10.9V25.7h12v39.1c0 2.4.3 4.1.8 5.1s1.4 1.5 2.6 1.5c1 0 2-.3 3-1 1-.6 1.7-1.4 2.1-2.4V25.7z" class="st2"/><path id="path7443" d="M303.1 25.7V79h-9.4l-1-6.5h-.3c-2.5 4.9-6.4 7.4-11.5 7.4-3.5 0-6.1-1.2-7.8-3.5-1.7-2.3-2.5-5.9-2.5-10.9V25.7h12v39.1c0 2.4.3 4.1.8 5.1s1.4 1.5 2.6 1.5c1 0 2-.3 3-1 1-.6 1.7-1.4 2.1-2.4V25.7z" class="st2"/><path id="path7445" d="M274.2 15.7h-11.9v63.2h-11.7V15.7h-11.9V6h35.5z" class="st2"/><path id="path7447" d="M342.8 34.2c-.7-3.4-1.9-5.8-3.5-7.3s-3.9-2.3-6.7-2.3c-2.2 0-4.3.6-6.2 1.9-1.9 1.2-3.4 2.9-4.4 4.9h-.1V3.3h-11.6v75.6h9.9l1.2-5h.3c.9 1.8 2.3 3.2 4.2 4.3 1.9 1 3.9 1.6 6.2 1.6 4.1 0 7-1.9 8.9-5.6 1.9-3.7 2.9-9.6 2.9-17.5v-8.4c-.1-6.1-.4-10.8-1.1-14.1zm-11 21.7c0 3.9-.2 6.9-.5 9.1-.3 2.2-.9 3.8-1.6 4.7-.8.9-1.8 1.4-3 1.4-1 0-1.9-.2-2.7-.7-.8-.5-1.5-1.2-2-2.1V38.1c.4-1.4 1.1-2.6 2.1-3.6 1-.9 2.1-1.4 3.2-1.4 1.2 0 2.2.5 2.8 1.4.7 1 1.1 2.6 1.4 4.8.3 2.3.4 5.5.4 9.6v7z" class="st2"/></g></g></svg>
+              <svg style="margin-left: -12px" fill="#1ab7ea" height="30" viewBox=".176 .181 69.595 22.29517356" width="120" xmlns="http://www.w3.org/2000/svg"><path d="m15.72 9.431c-.069 1.514-1.127 3.588-3.172 6.22-2.114 2.749-3.903 4.124-5.367 4.124-.906 0-1.673-.837-2.3-2.512l-1.255-4.604c-.465-1.674-.964-2.512-1.498-2.512-.116 0-.524.245-1.221.733l-.731-.943c.767-.674 1.524-1.349 2.269-2.025 1.024-.884 1.792-1.35 2.305-1.397 1.21-.116 1.955.712 2.235 2.483.302 1.912.511 3.101.628 3.566.349 1.586.733 2.378 1.152 2.378.326 0 .815-.515 1.467-1.543.651-1.029 1-1.812 1.047-2.349.093-.888-.256-1.333-1.047-1.333-.373 0-.757.085-1.151.255.764-2.504 2.224-3.721 4.38-3.652 1.598.047 2.351 1.084 2.259 3.111"/><path d="m22.281 1.918c-.023.58-.314 1.136-.874 1.669a3.12 3.12 0 0 1 -2.234.903c-1.327 0-1.968-.579-1.921-1.737.022-.602.378-1.182 1.064-1.738.687-.555 1.449-.834 2.288-.834.489 0 .896.192 1.223.574.325.382.477.77.454 1.163zm3.038 12.419c-.652 1.232-1.548 2.349-2.689 3.349-1.56 1.349-3.119 2.024-4.679 2.024-.723 0-1.275-.233-1.659-.699-.384-.465-.565-1.069-.541-1.814.022-.767.261-1.954.715-3.56.454-1.605.682-2.466.682-2.582 0-.605-.21-.908-.629-.908-.139 0-.536.245-1.188.733l-.803-.943 2.235-2.025c1.001-.884 1.746-1.35 2.236-1.397.768-.069 1.332.157 1.693.679.36.523.494 1.2.402 2.035-.303 1.415-.629 3.212-.978 5.392-.024.998.337 1.496 1.082 1.496.326 0 .908-.344 1.746-1.033.699-.574 1.269-1.114 1.712-1.62z"/><path d="m47.127 14.336c-.652 1.233-1.548 2.349-2.689 3.349-1.56 1.349-3.12 2.024-4.679 2.024-1.514 0-2.247-.837-2.2-2.513.022-.745.168-1.639.436-2.686.267-1.048.413-1.862.436-2.444.024-.883-.245-1.326-.806-1.326-.607 0-1.331.722-2.172 2.165-.887 1.514-1.367 2.98-1.436 4.4-.05 1.002.05 1.77.293 2.305-1.624.047-2.762-.221-3.411-.803-.582-.512-.848-1.361-.801-2.549.02-.745.136-1.49.343-2.235.205-.745.319-1.408.342-1.991.05-.861-.268-1.292-.944-1.292-.583 0-1.213.664-1.888 1.991a10.141 10.141 0 0 0 -1.119 4.155c-.05 1.305.04 2.212.25 2.724-1.598.047-2.733-.29-3.404-1.01-.558-.603-.812-1.52-.765-2.751.02-.603.129-1.445.321-2.524.192-1.08.299-1.921.321-2.525.05-.417-.06-.627-.314-.627-.14 0-.536.236-1.188.707l-.838-.943c.117-.092.849-.768 2.2-2.025.978-.907 1.641-1.373 1.99-1.396.606-.047 1.094.203 1.467.75.372.547.559 1.182.559 1.903 0 .233-.02.454-.07.664a6.433 6.433 0 0 1 1.222-1.398c1.071-.93 2.27-1.455 3.597-1.571 1.141-.093 1.955.174 2.445.803.395.512.581 1.246.558 2.2.163-.139.338-.291.525-.454.534-.628 1.058-1.128 1.57-1.501.861-.629 1.759-.978 2.689-1.048 1.118-.093 1.921.173 2.41.8.418.51.605 1.241.559 2.191-.024.65-.181 1.595-.472 2.836-.292 1.241-.436 1.953-.436 2.139-.024.488.023.824.139 1.009.117.186.395.278.838.278.326 0 .907-.344 1.746-1.034.698-.573 1.269-1.113 1.712-1.619z"/><path d="m52.295 10.654c.022-.625-.233-.938-.767-.938-.698 0-1.407.481-2.127 1.442-.721.961-1.093 1.882-1.116 2.762-.013 0-.013.151 0 .452a7.86 7.86 0 0 0 2.964-1.911c.674-.741 1.022-1.344 1.046-1.807zm7.927 3.646c-.675 1.117-2.002 2.232-3.981 3.348-2.467 1.418-4.971 2.126-7.508 2.126-1.885 0-3.237-.628-4.051-1.885-.582-.861-.861-1.885-.838-3.072.023-1.885.862-3.677 2.515-5.377 1.815-1.862 3.957-2.794 6.425-2.794 2.282 0 3.492.93 3.632 2.787.093 1.184-.559 2.404-1.956 3.658-1.49 1.371-3.365 2.241-5.622 2.612.418.581 1.046.871 1.885.871 1.676 0 3.504-.426 5.483-1.279 1.42-.599 2.538-1.221 3.353-1.866z"/><path d="m65.755 11.828a4.407 4.407 0 0 0 -.262-1.732c-.198-.524-.484-.788-.855-.788-1.188 0-2.166.642-2.933 1.925-.653 1.05-1.003 2.17-1.048 3.358-.024.584.081 1.098.314 1.54.255.514.616.77 1.083.77 1.047 0 1.944-.617 2.689-1.854.628-1.027.965-2.1 1.012-3.219zm3.946.132c-.093 2.139-.884 3.987-2.374 5.544s-3.342 2.336-5.553 2.336c-1.839 0-3.236-.593-4.19-1.779-.698-.883-1.083-1.987-1.152-3.311-.118-2 .604-3.836 2.165-5.51 1.676-1.859 3.782-2.789 6.32-2.789 1.629 0 2.863.547 3.702 1.639.792 1 1.152 2.29 1.082 3.87"/></svg>
+            </div>
+            <p style="background-color: oklch(0.936 0.032 17.717); padding: 12px; border-radius: 2px; color: oklch(0.396 0.141 25.723) ">
+              {{ JTranslate('COM_QUIX_GDPR_COMPLIANCE_VIDEO_WARNING', "We value your privacy! Hosting platforms like YouTube and Vimeo may collect personal data, including your IP address, viewing behavior, and location. By clicking <strong>'Allow Video'</strong>, you consent to loading external video content. Your consent will be stored in local storage for future visits, and you can withdraw it at any time") }}
+            </p>
+            <button
+              style='border: none; padding: 0.6rem; padding-inline: 2.5rem; background-color: red '
+              class="qx-btn-danger qx-btn-sm qx-allow-content-btn-{{ id }}">
+              <strong>{{ JTranslate('COM_QUIX_GDPR_COMPLIANCE_VIDEO_ALLOW', 'Allow Video') }}</strong>
+            </button>
+        </div>
+
+        <script>
+          (() => {
+            jQuery(document).ready(function () {
+              const button = jQuery(".qx-allow-content-btn-{{ id }}");
+              if(localStorage.getItem("allowVideoLoad") === 'true') {
+                jQuery(button).parent().remove();
+                loadVideo();
+                return;
+              }
+              window.allowVideoButtons = (window.allowVideoButtons ?? {});
+              window.allowVideoButtons["{{ id }}"] = button;
+
+              button.on("loadVideo", function () {
+                jQuery(this).parent().remove();
+                loadVideo();
+              });
+
+              button.click(function () {
+                localStorage.setItem("allowVideoLoad", 'true');
+                jQuery(this).parent().remove();
+                loadVideo();
+                for(const btn in window.allowVideoButtons) {
+                  if(btn !== "{{ id }}") {
+                    window.allowVideoButtons[btn].trigger("loadVideo");
+                  }
+                }
+              });
+
+            });
+
+            function loadVideo() {
+              jQuery(".qx-video-pro-container.{{ id }}-wrapper").html(`
+                {% import 'video-pro/partials/macro.twig' as video %}
+                {% if linkType == 'link' %}
+                    {% if enableOverlay %}
+                        {{ video.videoOverlay(videoId, ovImg, playIcon, pIcon, srcAttr, videoLink, tags) }}
+                    {% else %}
+                        <div class="custom-link-wrapper {{ wrapperClasses }}">
+                            {% set attr = 'iframe id="'~videoId~'" ' ~ srcAttr ~ '="' ~ videoLink ~ '" class="qx-width-expand" frameborder="0" ' ~ tags %}
+                            {{ wrapper(attr, 'iframe', false, false) }}
+                            {{ wrapper('iframe', 'iframe', false, true) }}
+                        </div>
+                    {% endif %}
+                {% elseif linkType == 'custom' and src.source %}
+                    <div class="custom-video-wrapper {{ wrapperClasses }}">{{ video( id, general.video_fg_text, tags ) }}</div>
+                {% else %}
+                    <p class="qx-alert qx-alert-warning qx-m-0">Please select video first!</p>
+                {% endif %}
+               `);
+            }
+          })();
+        </script>
+      {% endif %}
+
+      {% if isGdprComplianceOn and renderer %}
+
+        <div class="qx-video-pro-container qx-text-capitalize {{ id }}-wrapper">
+        </div>
+
+      {% else %}
+
+        {% if linkType == 'link' %}
+            {% if enableOverlay %}
+                <div class="overlay-video-wrapper {{ wrapperClasses }}">
+                  {% if (ovImg.source or playIcon) %}
+                      <a href="#{{ videoId }}" class="qx-display-block" data-qx-toggle="">
+                          {% if ovImg.type == "svg" %}
+                              {{ icon(ovImg.source) | raw }}
+                          {% else %}
+                              {{ image(ovImg.source, "", '', '', ovImg) | link("#") }}
+                          {% endif %}
+
+                          {% if playIcon %}
+                              <div class="playIcon qx-position-center">
+                                  {% if pIcon.source %}
+                                      {% if pIcon.type == "svg" %}
+                                          {{ icon(pIcon.source) | raw }}
+                                          {% if pIcon.properties %}
+                                              {{ addIconStyle('#' ~ id, pIcon) }}
+                                          {% endif %}
+                                      {% else %}
+                                          {{ image(pIcon.source, alt_text, "", '', pIcon) | link("") }}
+                                      {% endif %}
+                                  {% else %}
+                                      <i class="qxif-play-circle qx-text-large" style="font-size: 100px;"></i>
+                                  {% endif %}
+                              </div>
+                          {% endif %}
+                      </a>
+                  {% endif %}
+
+                  <div id="{{ videoId }}" class="qx-flex-top" data-qx-modal="bg-close: false">
+                      <div class="qx-modal-dialog qx-width-auto">
+                          <button class="qx-modal-close-outside" type="button" qx-close></button>
+                          {% set attr = 'iframe id="'~videoId~'" ' ~ srcAttr ~ '="' ~ videoLink ~ '"  class="qx-width-expand" qx-height-viewport="offset-bottom:20;" frameborder="0" ' ~ tags %}
+                          {{ wrapper(attr, 'iframe', false, false) }}
+                          {{ wrapper('iframe', 'iframe', false, true) }}
+                      </div>
+                  </div>
+              </div>
+            {% else %}
+                <div class="custom-link-wrapper {{ wrapperClasses }}">
+                    {% set attr = 'iframe id="'~videoId~'" ' ~ srcAttr ~ '="' ~ videoLink ~ '" class="qx-width-expand" frameborder="0" ' ~ tags %}
+                    {{ wrapper(attr, 'iframe', false, false) }}
+                    {{ wrapper('iframe', 'iframe', false, true) }}
+                </div>
+            {% endif %}
+        {% elseif linkType == 'custom' and src.source %}
+            <div class="custom-video-wrapper {{ wrapperClasses }}">{{ video( id, general.video_fg_text, tags ) }}</div>
+        {% else %}
+            <p class="qx-alert qx-alert-warning qx-m-0">Please select video first!</p>
+        {% endif %}
+
+     {% endif %}
+
+    {% endblock %}
+{% endembed %}

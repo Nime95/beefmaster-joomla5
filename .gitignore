@@ -1,0 +1,31 @@
+# Joomla specific ignores
+configuration.php
+cache/
+tmp/
+logs/
+error_logs/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Build and dependency files
+node_modules/
+vendor/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*_old_*
+
+# Log files
+*.log

@@ -1,0 +1,16 @@
+fieldset .webfont p {
+    font-size: 14px;
+    margin-top: 12px;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+form .webfont label {
+    font-size: 12px;
+}
+
+.btn-primary.btn-update-fonts-list {
+    color: #fff;
+}
+#typography_params > .control-group:first-child{
+	display: none;
+}

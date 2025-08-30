@@ -1,0 +1,26 @@
+atoms:
+  -
+    id: assets-1836
+    type: assets
+    title: 'Custom CSS / JS'
+    attributes:
+      enabled: '1'
+      css:
+        - { location: '', inline: "#preloaderID {\n    position: fixed;\n    height: 100vh;\n    width: 100vw;\n    background:#afa177;\n    z-index: 30;\n    top: 0;\n        display: flex;\n    align-items: center;\njustify-content: center;\n}\n#preloaderID img {width:auto;height:auto;}", extra: {  }, priority: '0', name: '#preloaderID' }
+        - { location: '', inline: ".headroom--top.headroom--not-bottom,\n.headroom--pinned.headroom--top{\n    top: 40px;\t\n}\n\n.headroom--not-top.headroom--pinned{\n\ttop: 0px;\n}\n\n.headroom--not-top.headroom--unpinned{\n\ttop: 0px;\n}\n\n", extra: {  }, priority: '0', name: stickyHeader }
+      javascript:
+        - { location: '', inline: 'jQuery(document).ready(function() {        setTimeout(()=>jQuery("#preloaderID").fadeOut(), 3000);});', in_footer: '0', extra: {  }, priority: '0', name: '#preloaderID' }
+  -
+    id: fixedheader-9221
+    type: fixedheader
+    title: 'Fixed Header'
+    attributes:
+      enabled: '1'
+      section: '#g-header'
+      pinnedbg: section
+      custombg: '#ffffff'
+      autohide: enabled
+      mobile: disabled
+      padding: '40'
+      offset: '40'
+      tolerance: '40'

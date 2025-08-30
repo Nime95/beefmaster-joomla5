@@ -1,0 +1,39 @@
+{% macro videoOverlay(videoId, ovImg, playIcon, pIcon, srcAttr, videoLink, tags) %}
+    <div class="overlay-video-wrapper {{ wrapperClasses }}">
+        {% if (ovImg.source or playIcon) %}
+            <a href="#{{ videoId }}" class="qx-display-block" data-qx-toggle="">
+                {% if ovImg.type == "svg" %}
+                    {{ icon(ovImg.source) | raw }}
+                {% else %}
+                    {{ image(ovImg.source, "", '', '', ovImg) | link("#") }}
+                {% endif %}
+
+                {% if playIcon %}
+                    <div class="playIcon qx-position-center">
+                        {% if pIcon.source %}
+                            {% if pIcon.type == "svg" %}
+                                {{ icon(pIcon.source) | raw }}
+                                {% if pIcon.properties %}
+                                    {{ addIconStyle('#' ~ id, pIcon) }}
+                                {% endif %}
+                            {% else %}
+                                {{ image(pIcon.source, alt_text, "", '', pIcon) | link("") }}
+                            {% endif %}
+                        {% else %}
+                            <i class="qxif-play-circle qx-text-large" style="font-size: 100px;"></i>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </a>
+        {% endif %}
+
+        <div id="{{ videoId }}" class="qx-flex-top" data-qx-modal="bg-close: false">
+            <div class="qx-modal-dialog qx-width-auto">
+                <button class="qx-modal-close-outside" type="button" qx-close></button>
+                {% set attr = 'iframe id="'~videoId~'" ' ~ srcAttr ~ '="' ~ videoLink ~ '"  class="qx-width-expand" qx-height-viewport="offset-bottom:20;" frameborder="0" ' ~ tags %}
+                {{ wrapper(attr, 'iframe', false, false) }}
+                {{ wrapper('iframe', 'iframe', false, true) }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

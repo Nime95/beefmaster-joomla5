@@ -1,0 +1,210 @@
+<?php
+require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/fpdf/fpdf.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+
+/** CSV einlesen **/
+function parse_csv(string $filename): array {
+    $rows = [];
+    if (($h = fopen($filename, "r")) !== FALSE) {
+        while (($data = fgetcsv($h, 10000, ";")) !== FALSE) {
+            $rows[] = $data;
+        }
+        fclose($h);
+    }
+    return $rows;
+}
+
+/** Datum parsen **/
+function parse_date(string $str): ?DateTime {
+    $p = explode('.', $str);
+    return count($p)===3
+        ? DateTime::createFromFormat('d.m.Y', $str)
+        : null;
+}
+
+/** Ohrmarke-Name splitten **/
+function teile_ohrmarke_und_name(string $w): array {
+    $t = explode(' - ', $w, 2);
+    return ['Ohrmarke'=>$t[0] ?? '','Name'=>$t[1] ?? ''];
+}
+
+/** Excel‑Export **/
+function create_excel(array $rows, int $omi, int $gdi, int $ab_v, int $ab_b, int $jg_v, int $jg_b, int $max_m, string $datum): string {
+    $ss    = new Spreadsheet();
+    $sheet = $ss->getActiveSheet();
+    // Header
+    $hdrs = $rows[0]; array_shift($hdrs);
+    array_splice($hdrs,$omi,1,['Ohrmarke','Name']);
+    $hdrs = array_merge($hdrs,['Absetzfenster','Jahresfenster','Gewicht']);
+    $sheet->fromArray($hdrs,NULL,'A1');
+    foreach(range('A',chr(64+count($hdrs))) as $col){
+        $sheet->getColumnDimension($col)->setAutoSize(true);
+    }
+
+    $today     = new DateTime();
+    $now       = time();
+    $threshold = strtotime('-3 months',$now);
+    $rnum      = 2;
+
+    for($i=1;$i<count($rows);$i++){
+        $r   = $rows[$i]; array_shift($r);
+        $geb = parse_date($r[$gdi]); if(!$geb) continue;
+        // Alter in Monaten
+        $diff = $today->diff($geb);
+        $mon  = $diff->y*12 + $diff->m + round($diff->d/30,2);
+        if($mon > $max_m) continue;
+        // Ohrmarke/Name
+        $t = teile_ohrmarke_und_name($r[$omi]);
+        array_splice($r,$omi,1,[$t['Ohrmarke'],$t['Name']]);
+        // Fenster
+        $av  = (clone $geb)->modify("+{$ab_v} days");
+        $ab  = (clone $geb)->modify("+{$ab_b} days");
+        $jv  = (clone $geb)->modify("+{$jg_v} days");
+        $jb  = (clone $geb)->modify("+{$jg_b} days");
+        $rf  = $av->format('d.m.Y').' bis '.$ab->format('d.m.Y');
+        $jf  = $jv->format('d.m.Y').' bis '.$jb->format('d.m.Y');
+        $r   = array_merge($r,[$rf,$jf,'']);
+        // schreiben + Rahmen
+        $sheet->fromArray($r,NULL,"A{$rnum}");
+        $range = "A{$rnum}:" . chr(64+count($r)) . $rnum;
+        $sheet->getStyle($range)
+              ->getBorders()->getAllBorders()
+              ->setBorderStyle(Border::BORDER_THIN);
+        // Fill‑Logik: wenn beide Absetz- UND Jahresfenster enden vor Threshold, bleibt weiß
+        $col     = [255,255,255];
+        $ab_end  = $ab->getTimestamp();
+        $jg_end  = $jb->getTimestamp();
+        if (!($ab_end <= $threshold && $jg_end <= $threshold)) {
+            // wenn mindestens eins nicht komplett abgelaufen, dann prüfen Startdaten
+            $ab_start = $av->getTimestamp();
+            $jg_start = $jv->getTimestamp();
+            if ($ab_start - $now <= 14*86400 || $jg_start - $now <= 14*86400) {
+                $col = [255,0,0];
+            } elseif ($ab_start - $now <= 60*86400 || $jg_start - $now <= 60*86400) {
+                $col = [255,165,0];
+            }
+            $sheet->getStyle($range)
+                  ->getFill()->setFillType(Fill::FILL_SOLID)
+                  ->getStartColor()->setRGB(
+                      sprintf('%02X%02X%02X',$col[0],$col[1],$col[2])
+                  );
+        }
+        $rnum++;
+    }
+
+    $file = sys_get_temp_dir()."/wiegung_".date('Y-m-d',strtotime($datum)).".xlsx";
+    (new Xlsx($ss))->save($file);
+    return $file;
+}
+
+/** PDF‑Export (Querformat) **/
+function create_pdf(array $rows, int $omi, int $gdi, string $datum, int $ab_v, int $ab_b, int $jg_v, int $jg_b, int $max_m): string {
+    $pdf = new FPDF('L','mm','A4');
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','',10);
+    // Header
+    $hdr = ['Ohrmarke','Name','Geb.dat.','Geschl.','Alter','Absetzfenster','Jahresfenster','Gewicht'];
+    $w   = [38,40,28,18,17,54,54,20];
+    foreach($hdr as $i=>$h){
+        $pdf->Cell($w[$i],8,utf8_decode($h),1,0,'C');
+    }
+    $pdf->Ln();
+
+    $today     = new DateTime();
+    $now       = time();
+    $threshold = strtotime('-3 months',$now);
+
+    for($i=1;$i<count($rows);$i++){
+        $r   = $rows[$i]; array_shift($r);
+        $geb = parse_date($r[$gdi]); if(!$geb) continue;
+        $diff= $today->diff($geb);
+        $mon = $diff->y*12 + $diff->m + round($diff->d/30,2);
+        if($mon > $max_m) continue;
+
+        $t      = teile_ohrmarke_und_name($r[$omi]);
+        $gesch  = utf8_decode($r[$gdi+1] ?? '');
+        $av     = (clone $geb)->modify("+{$ab_v} days");
+        $ab     = (clone $geb)->modify("+{$ab_b} days");
+        $jv     = (clone $geb)->modify("+{$jg_v} days");
+        $jb     = (clone $geb)->modify("+{$jg_b} days");
+        $rf     = utf8_decode($av->format('d.m.Y').' bis '.$ab->format('d.m.Y'));
+        $jf     = utf8_decode($jv->format('d.m.Y').' bis '.$jb->format('d.m.Y'));
+
+        // Fill‑Logik: beide Fenster-Enden älter als 3 Monate?
+        $col    = [255,255,255];
+        $fill   = false;
+        $ab_end = $ab->getTimestamp();
+        $jg_end = $jb->getTimestamp();
+        if (!($ab_end <= $threshold && $jg_end <= $threshold)) {
+            // falls nicht, prüfe Startdaten
+            $ab_s = $av->getTimestamp();
+            $jg_s = $jv->getTimestamp();
+            if ($ab_s - $now <= 14*86400 || $jg_s - $now <= 14*86400) {
+                $col  = [255,0,0]; $fill = true;
+            } elseif ($ab_s - $now <= 60*86400 || $jg_s - $now <= 60*86400) {
+                $col  = [255,165,0]; $fill = true;
+            }
+        }
+        $pdf->SetFillColor($col[0],$col[1],$col[2]);
+
+        $data = [
+            utf8_decode($t['Ohrmarke']),
+            utf8_decode($t['Name']),
+            $geb->format('d.m.Y'),
+            $gesch,
+            number_format($mon,2,',',''),
+            $rf,
+            $jf,
+            ''
+        ];
+        foreach($data as $j=>$c){
+            $pdf->Cell($w[$j],8,$c,1,0,'L',$fill);
+        }
+        $pdf->Ln();
+    }
+
+    $file = sys_get_temp_dir()."/wiegung_".date('Y-m-d',strtotime($datum)).".pdf";
+    $pdf->Output('F',$file);
+    return $file;
+}
+
+// Haupt-Handler
+if($_SERVER['REQUEST_METHOD']==='POST' && isset($_FILES['csv_datei'])){
+    $tmp  = $_FILES['csv_datei']['tmp_name'];
+    $rows = parse_csv($tmp);
+    $hdr  = $rows[0]; array_shift($hdr);
+    $omi  = array_search('Ohrmarke-Name',$hdr);
+    $gdi  = array_search('Geburtsdatum',  $hdr);
+    $ab_v = intval($_POST['absetz_von']);
+    $ab_b = intval($_POST['absetz_bis']);
+    $jg_v = intval($_POST['jahres_von']);
+    $jg_b = intval($_POST['jahres_bis']);
+    $max_m= intval($_POST['max_alter']);
+    $datum= $_POST['wiegung_datum'];
+    $outX = isset($_POST['output_excel']);
+    $outP = isset($_POST['output_pdf']);
+    $files=[];
+    if($outX) $files[]=create_excel($rows,$omi,$gdi,$ab_v,$ab_b,$jg_v,$jg_b,$max_m,$datum);
+    if($outP) $files[]=create_pdf(  $rows,$omi,$gdi,$datum,$ab_v,$ab_b,$jg_v,$jg_b,$max_m);
+    if(count($files)===1){
+        header('Content-Type:application/octet-stream');
+        header('Content-Disposition:attachment;filename="'.basename($files[0]).'"');
+        readfile($files[0]); unlink($files[0]); exit;
+    } elseif(count($files)>1){
+        $zip=sys_get_temp_dir()."/wiegefenster_output_".date('Y-m-d',strtotime($datum)).".zip";
+        $z=new ZipArchive(); $z->open($zip,ZipArchive::CREATE);
+        foreach($files as$f) $z->addFile($f,basename($f));
+        $z->close(); foreach($files as$f) unlink($f);
+        header('Content-Type:application/zip');
+        header('Content-Disposition:attachment;filename="'.basename($zip).'";');
+        readfile($zip); unlink($zip); exit;
+    } else {
+        echo "Keine Ausgabeformate ausgewählt.";
+    }
+}
+?>

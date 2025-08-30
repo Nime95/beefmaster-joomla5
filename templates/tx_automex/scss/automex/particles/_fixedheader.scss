@@ -1,0 +1,42 @@
+@import "dependencies";
+
+@include breakpoint(mobile-only) {
+    .headroom-bg-section {
+        
+        &.headroom--pinned, &.headroom--unpinned {
+            @include transform(none !important);
+        }
+
+        .disable-mobile & {
+            position: relative !important;
+
+            + section, + header { 
+                padding-top: 0 !important;
+            }
+        }
+    }
+}
+
+.headroom-bg-section {
+    position: fixed !important;
+    width: 100%;
+    z-index: 1001;
+    right: 0;
+    left: 0;
+    top: 0;    
+    @include transition(all 0.3s);
+    @include backface-visibility(hidden);
+
+    &.headroom--pinned {
+        @include transform(translateY(0%));
+    }
+
+    &.headroom--unpinned {
+        @include transform(translateY(-100%));
+    }
+}
+
+#g-page-surround .headroom-bg-section.headroom--pinned.headroom--not-top{
+    background: $navigation-background !Important;
+    box-shadow: 0 0 5px #ddd;
+}

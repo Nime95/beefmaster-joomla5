@@ -1,0 +1,4 @@
+enabled: '1'
+content: ' Design and Developed by <a href="https://www.themexpert.com/" title="Quix Page Builder" class="g-powered-by">ThemeXpert</a>'
+css:
+  class: g-branding

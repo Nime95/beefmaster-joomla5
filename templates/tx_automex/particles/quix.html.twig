@@ -1,0 +1,17 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-quix">
+    	{% if particle.quix.id %}
+	    	{% set collection = joomla.call('qxGetCollectionInfoById', particle.quix.id) %}
+	    	{# {{ collection.title }} #}
+	    	{% if collection.id %}
+	    		{{ joomla.call('quixRenderItem', collection)|raw }}
+	    	{% else %}
+	    		<p class="alert">Invalid Quix item. Please check and update. Thanks</p>
+			{% endif %}    		
+    	{% else %}
+    		<p class="alert">Please select a quix item first!</p>
+		{% endif %}
+    </div>
+{% endblock %}

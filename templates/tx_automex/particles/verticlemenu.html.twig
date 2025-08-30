@@ -1,0 +1,64 @@
+{% try %}
+{% set menu = gantry.menu.instance(particle) %}
+{% catch %}
+<div class="alert alert-error">{{ e.getMessage }}</div>
+{% endtry %}
+
+{% macro displayParticle(item, context) %}
+    {% set context = context|merge({ particle: item.options.particle }) %}
+    {% set classes = item.options.block.class %}
+    <div class="menu-item-particle{{ classes ? ' ' ~ classes }}">
+    {% include ['particles/' ~ item.particle ~ '.html.twig', '@particles/' ~ item.particle ~ '.html.twig']
+    ignore missing with context only %}
+    </div>
+{% endmacro %}
+
+{% macro displayTitle(item) %}
+    {% if not item.icon_only or not (item.image or item.icon) %}
+        {{ item.title }}
+    {% endif %}
+{% endmacro %}
+
+{% macro displayItem(item, menu, context) %}
+    {% import _self as self %}
+    {% if item.type == 'particle' and not item.options.particle.enabled %} 
+        {% set enabled = 0 %}
+    {% endif %}
+    {% if item.visible and item.enabled and enabled|default(1) %}
+        {% set title = item.icon_only or item.link_title ? ' title="' ~ item.link_title|default(item.title)|e ~ '"' %}
+        {% set label = item.icon_only and (item.image or item.icon) ? ' aria-label="' ~ item.title|e ~'"' %}
+        {% set active = menu.isActive(item) ? ' active' %}
+        {% set dropdown = item.level == 1 ? ' g-' ~ item.getDropdown() %}
+        {% set parent = item.children ? ' g-parent' %}
+        {% set target = (item.target != '_self' or context.particle.forceTarget) ? ' target="' ~ item.target|e ~ '"' %}
+        {% set rel = item.rel ? ' rel="' ~ item.rel|e ~ '"' %}
+
+
+        <li class="g-menu-item g-menu-item-type-{{ item.type }} g-menu-item-{{ item.id }}">
+            {% if item.url %}<a class="g-menu-item-container{{ item.anchor_class ? ' ' ~ item.anchor_class }}" href="{{ item.url }}{{ item.hash }}"{{ (title ~ label ~ target ~ rel)|raw }}>
+            {% else %}<div class="g-menu-item-container{{ item.anchor_class ? ' ' ~ item.anchor_class }}" data-g-menuparent=""{{ label|raw }}>{% endif %}
+                {{ self.displayTitle(item) }}
+            {% if item.url %}</a>
+            {% else %}</div>{% endif %}
+        </li>
+    {% endif %}
+{% endmacro %}
+
+{% macro displayItems(items, menu, context) %}
+    {% import _self as self %}
+    {% for item in items %}
+        {{ self.displayItem(item, menu, context) }}
+    {% endfor %}
+{% endmacro %}
+
+
+{% import _self as macro %}
+
+{% if menu.root.count() %}
+<nav class="g-verticlemenu">
+    <h4 class="g-title">{{ particle.title|raw }}</h4>
+    <ul>
+        {{ macro.displayItems(menu.root, menu, _context) }}
+    </ul>
+</nav>
+{% endif %}

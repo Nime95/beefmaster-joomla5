@@ -1,0 +1,69 @@
+/**
+* Securitycheck Control Panel User Interface CSS
+* @ author Jose A. Luque
+* @ Copyright (c) 2011 - Jose A. Luque
+* @license GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*
+ * File Manager
+ */
+
+ div.con_borde {
+	border: 1px solid #070707 !important;	
+}
+
+div.centrado
+{
+text-align: center;
+}
+
+div.texto_14
+{
+font-size: 14px;
+}
+
+div.texto_20
+{
+font-size: 20px;
+}
+
+div.margen-loading
+{
+margin: 20px 20px;
+}
+
+div.color_verde
+{
+color: #0B7C08;
+}
+
+div.color_rojo
+{
+color: #E31E1E;
+}
+
+div.margen-container
+{
+margin: 20px 20px;
+}
+
+div.margen 
+{
+margin:20px 10px auto 0;
+}
+
+
+.margin-top-10 {
+	margin-top: 10px !important;
+}
+
+.margin-bottom-10 {
+	margin-bottom: 10px !important;
+}
+
+.center {
+	text-align: center !important;
+}
+
+}

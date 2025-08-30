@@ -1,0 +1,163 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: quix
+  timestamp: 1651560790
+layout:
+  /topbar/:
+    -
+      - 'social-9071 25'
+      - 'social-8812 25'
+      - 'social-9176 50'
+  /header/:
+    -
+      - logo-5836
+    -
+      - 'menu-9266 65'
+      - 'menu-5313 10'
+      - 'position-position-1937 25'
+  /navigation/: {  }
+  /main/:
+    -
+      - system-messages-5477
+    -
+      - system-content-1161
+  /contentbottom/: {  }
+  /footer/:
+    -
+      - position-position-6269
+  /copyright/:
+    -
+      - copyright-4571
+  offcanvas:
+    -
+      - mobile-menu-8586
+structure:
+  topbar:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-vertical-paddings-large
+      extra:
+        -
+          sticky-header: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  contentbottom:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+  offcanvas:
+    attributes:
+      position: g-offcanvas-right
+      class: ''
+      extra: {  }
+      swipe: '1'
+      css3animation: '1'
+content:
+  social-9071:
+    attributes:
+      target: _self
+      items:
+        -
+          icon: ''
+          text: 'About us'
+          title: ''
+          link: '#aboutus'
+          name: 'About Us'
+    block:
+      variations: 'nomargintop nopaddingtop nomarginbottom nopaddingbottom nomarginright nopaddingright align-right'
+  social-8812:
+    attributes:
+      css:
+        class: ''
+      target: _blank
+      items:
+        -
+          icon: ''
+          text: Disclaimer
+          title: ''
+          link: 'index.php?option=com_quix&view=page&id=27'
+          name: Disclaimer
+        -
+          icon: ''
+          text: 'Privacy policy'
+          title: ''
+          link: 'index.php?option=com_quix&view=page&id=28'
+          name: 'Privacy policy'
+    block:
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom nomarginleft nopaddingleft'
+  social-9176:
+    attributes:
+      display: icons_only
+      items:
+        -
+          icon: 'fa fa-facebook'
+          text: ''
+          title: ''
+          link: 'http://www.facebook.at/beefmasteraustria'
+          name: Facebook
+    block:
+      variations: 'align-right nomargintop nomarginbottom nopaddingbottom nopaddingtop'
+  logo-5836:
+    title: 'Logo / Image'
+    attributes:
+      target: _self
+      image: 'gantry-media://poster/Logo2.png'
+      height: 150px
+      class: automex-logo
+    block:
+      id: main-logo
+      variations: 'nomargintop nomarginbottom nopaddingtop nopaddingbottom center'
+  menu-9266:
+    attributes:
+      menu: mainmenu-en
+      base: /
+      startLevel: '1'
+    block:
+      variations: 'nomarginall nopaddingall align-right'
+  menu-5313:
+    attributes:
+      enabled: 0
+  position-position-1937:
+    title: 'Language switcher'
+    attributes:
+      key: topbar-right
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-position-6269:
+    title: 'Module Position'
+    attributes:
+      key: footer
+    block:
+      variations: nomarginall
+  copyright-4571:
+    attributes:
+      additional:
+        text: 'Beefmaster Austria. All Rights Reserved. Design and Developed by Micha Hamersky. Pictures by Micha Hamersky & Beefmaster Breeders United'
+    block:
+      variations: center

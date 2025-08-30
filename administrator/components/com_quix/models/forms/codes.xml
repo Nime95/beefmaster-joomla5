@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+            name="head_code"
+            type="editor"
+            editor="codemirror|none"
+            buttons="no"
+            rows="40"
+            cols="auto"
+            syntax="html"
+            filter="raw"
+            default=""
+            label="COM_QUIX_CONFIG_USER_NAME_LABEL"
+            description ="COM_QUIX_CONFIG_USER_NAME_DESC"
+        />
+
+<!--        <field name="enable_header_code"-->
+<!--               type="radio" class="btn-group btn-yes-no"-->
+<!--               label="COM_QUIX_codes_enable_header_code"-->
+<!--               description="COM_QUIX_codes_enable_header_code_desc"-->
+<!--               default="1"-->
+<!--        >-->
+<!--            <option value="0">JNO</option>-->
+<!--            <option value="1">JYES</option>-->
+<!--        </field>-->
+
+        <field
+            name="footer_code"
+            type="editor"
+            editor="codemirror|none"
+            buttons="no"
+            rows="40"
+            cols="auto"
+            syntax="html"
+            filter="raw"
+            class="input-large"
+            label="COM_QUIX_CONFIG_USER_KEY_LABEL"
+            description ="COM_QUIX_CONFIG_USER_KEY_DESC"
+        />
+
+<!--        <field name="enable_footer_code"-->
+<!--               type="radio" class="btn-group btn-yes-no"-->
+<!--               label="COM_QUIX_codes_enable_footer_code"-->
+<!--               description="COM_QUIX_codes_enable_footer_code_desc"-->
+<!--               default="1"-->
+<!--        >-->
+<!--            <option value="0">JNO</option>-->
+<!--            <option value="1">JYES</option>-->
+<!--        </field>-->
+
+
+	</fieldset>
+</form>

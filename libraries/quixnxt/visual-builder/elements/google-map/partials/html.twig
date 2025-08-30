@@ -1,0 +1,126 @@
+{% set id = advanced.identifier.id %}
+{% set class = advanced.identifier.class %}
+{% set location = general.configuration.location %}
+{% set views = general.configuration.views %}
+{% set q = location | url_encode %}
+{% set label = location %}
+{% set height = general.configuration.height %}
+{% set isGdprComplianceOn = isGdprComplianceEnabled() %}
+
+{% set zoom = general.configuration.zoom %}
+{% if zoom.value %}
+    {% set zoom = zoom.value %}
+{% endif %}
+
+{% set classes = classNames('qx-element qx-element-map', visibilityClass(visibility), class ) %}
+{% set animation = advanced.animation_fields_group.animation %}
+{% set animationRepeat = advanced.animation_fields_group.animation_repeat %}
+{% set animationDelay = advanced.animation_fields_group.animation_delay %}
+{% set background = advanced.background_fields_group.background %}
+
+{% embed "animation.twig" with {
+    "id" : id,
+    "classes" : classes,
+    "animation" : animation,
+    "animationRepeat" : animationRepeat,
+    "animationDelay" : animationDelay,
+    "background" : background
+} %}
+    {% block element %}
+      {% if isGdprComplianceOn and renderer %}
+
+        <div
+          class="qx-flex qx-align-items-center qx-position-relative qx-text-center"
+          style="
+            min-width: 1140px;
+            height: 407px;
+            border-radius: 5px;
+            overflow: hidden;
+            background: url('media/quixnxt/images/google-map.png') no-repeat center;
+          "
+        >
+          <div style="backdrop-filter: blur(4px) contrast(0.9); position: absolute; width: 100%; height: 100%;" ></div>
+          <div style="
+              background: white;
+              z-index: 1;
+              border-radius: 10px;
+              padding: 2rem;
+              margin: 4rem;
+            "
+          >
+            <p>
+              {{ JTranslate('COM_QUIX_GDPR_COMPLIANCE_GOOGLE_MAP_WARNING', "We value your privacy. Google Map may collect some of your personal data such as IP address and location. By clicking <strong>'Allow Google Map'</strong>, you consent to load Google Map. Your consent will be stored in local storage for future visits, and you can withdraw it anytime.") }}
+            </p>
+            <button
+              style='border: none; padding: 0.6rem;'
+              class="qx-btn-primary qx-btn-sm qx-allow-content-btn-{{ id }}">
+              <strong>{{ JTranslate('COM_QUIX_GDPR_COMPLIANCE_GOOGLE_MAP_ALLOW', "Allow Google Map") }}</strong>
+            </button>
+          </div>
+
+        </div>
+
+        <script id="iframe-test-id">
+          (() => {
+            jQuery(document).ready(function () {
+              const button = jQuery(".qx-allow-content-btn-{{ id }}");
+              if(localStorage.getItem("allowGoogleMapLoad") === 'true') {
+                jQuery(button).parent().parent().remove();
+                loadMap();
+                return;
+              }
+              window.allowGoogleMapButtons = (window.allowGoogleMapButtons ?? {});
+              window.allowGoogleMapButtons["{{ id }}"] = button;
+              button.on("loadMap", function () {
+                jQuery(this).parent().parent().remove();
+                loadMap();
+              });
+              button.click(function () {
+                localStorage.setItem("allowGoogleMapLoad", 'true');
+                jQuery(this).parent().parent().remove();
+                loadMap();
+                for(const btn in window.allowGoogleMapButtons) {
+                  if(btn !== "{{ id }}") {
+                    window.allowGoogleMapButtons[btn].trigger("loadMap");
+                  }
+                }
+              });
+
+            });
+            function loadMap() {
+              jQuery(".qx-google-map-container.{{ id }}-wrapper").html(`
+                <iframe
+                  id="googleMaps"
+                  height={{height}}
+                  src="https://maps.google.com/maps?q={{ q }}&amp;t={{ views }}&amp;z={{ zoom|default('16') }}&amp;output=embed&amp;iwloc=near"
+                  aria-label="{{ label }}"
+                  style="height:{{ height }}px;">
+                    Loading...
+                </iframe>
+              `);
+            }
+          })()
+
+        </script>
+      {% endif %}
+
+      {% if isGdprComplianceOn and renderer %}
+        <div class="qx-google-map-container {{ id }}-wrapper">
+          <p><strong>Address:</strong> {{ label }}</p>
+        </div>
+      {% else %}
+        <div class="google-map-container">
+          <iframe
+            id="googleMaps"
+            height={{height}}
+            src="https://maps.google.com/maps?q={{ q }}&amp;t={{ views }}&amp;z={{ zoom|default('16') }}&amp;output=embed&amp;iwloc=near"
+            aria-label="{{ label }}"
+            allowfullscreen=""
+            style="height:{{ height }}px;">
+              Loading...
+          </iframe>
+        </div>
+      {% endif %}
+
+    {% endblock %}
+{% endembed %}

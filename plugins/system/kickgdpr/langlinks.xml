@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fieldset name="langlinks" label="PLG_SYSTEM_KICKGDPR_FIELDSET_LANG_LINKS_LABEL">
+        <field name="language" type="contentlanguage"
+               label="JFIELD_LANGUAGE_LABEL"
+               description="PLG_SYSTEM_KICKGDPR_FIELD_LANGUAGE_DESC"
+               >
+            <option value="*">JALL</option>
+        </field>
+        <field name="link"
+               type="menuitem"
+               default=""
+               label="PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_LABEL"
+               description="PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_DESC"
+        >
+            <option value="">JDEFAULT</option>
+        </field>
+        <field name="link_url"
+               type="text"
+               size="60"
+               default=""
+               label="PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_URL_LABEL"
+               description="PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_URL_DESC"
+        />
+        <field name="link_url_target"
+               type="list"
+               default="_blank"
+               label="PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_URL_TARGET_LABEL"
+               description="PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_URL_TARGET_DESC">
+            <option value="_blank">PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_URL_TARGET_NEW</option>
+            <option value="_self">PLG_SYSTEM_KICKGDPR_LEARNMORE_LINK_URL_TARGET_SAME</option>
+        </field>
+    </fieldset>
+</form>

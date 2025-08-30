@@ -1,0 +1,77 @@
+{% set id = advanced.identifier.id %}
+{% set type = general.date_time.type %}
+{% set action = general.actions.action %}
+{% set redirect_url = general.actions.redirect_url %}
+{% set message = general.actions.message %}
+{% set hide_id = general.actions.hide_id %}
+{% set evergreen_time = general.date_time.evergreen_time %}
+
+
+{#{% if mode == 'preview' %}#}
+{% if type == 'evergreen' %}
+jQuery(document).ready(function(){
+    {# update session when settings updated #}
+
+    var original = localStorage.getItem('quix_countdown_original_{{ id }}');
+
+    if(original != '{{evergreen_time}}'){
+        localStorage.setItem('quix_countdown_original_{{ id }}', '{{evergreen_time}}');
+        localStorage.removeItem('quix_countdown_end_{{ id }}');
+    }
+
+    var endSession = localStorage.getItem('quix_countdown_end_{{ id }}');
+    if(endSession !== null){
+        {#console.log('running from session', endSession, 'quix_countdown_end_{{ id }}');#}
+        var endTime = new Date(endSession);
+        var updated_time = new Date(endTime);
+        updated_time = new Date(updated_time.getTime() - updated_time.getTimezoneOffset() * 60000);
+        updated_time = new Date (updated_time).toISOString().slice(0, -5);
+    }else{
+        {#parepare user input#}
+        var evergreen_time = "{{ general.date_time.evergreen_time }}";
+        var evergreen_array = evergreen_time.split(':');
+
+        {#Modify the time to new one#}
+        var evergreen_new_date = new Date();
+        evergreen_new_date.setHours(evergreen_new_date.getHours() + parseInt(evergreen_array[0]));
+        evergreen_new_date.setMinutes(evergreen_new_date.getMinutes() + parseInt(evergreen_array[1]));
+        evergreen_new_date.setSeconds(evergreen_new_date.getSeconds() + parseInt(evergreen_array[2]));
+
+        {# prepare the timezone gap #}
+        var date_new = new Date(evergreen_new_date.getTime() - evergreen_new_date.getTimezoneOffset() * 60000);
+        var updated_time = date_new.toISOString().slice(0, -5);
+
+        {# store in localstorage #}
+        localStorage.setItem('quix_countdown_end_{{ id }}',  new Date(updated_time));
+        {#console.log('quix_countdown_end_{{ id }}', updated_time, new Date(updated_time));#}
+    }
+
+    {#start UIKIT#}
+    qxUIkit.countdown('#{{ id }} .qx-countdown-wrapper', {date: updated_time});
+
+    {#setTimeout(()=> {qxUIkit.countdown('#{{ id }} .qx-countdown-wrapper', {date: format_new});}, 2000);#}
+    {#let balance_time = qxUIkit.countdown('#{{ id }} > div').date - Date.now();#}
+    let balance_time =  new Date(updated_time) - Date.now();
+    let action = "{{ action }}";
+    console.log(action);
+    if(balance_time < 0){
+        if(action == 'redirect'){
+            {% if mode == 'preview' %}window.location.href = "{{redirect_url}}";{% endif %}
+        }else if(action == 'message'){
+            jQuery('#{{ id }}').fadeOut(500, function() {
+                jQuery(this).html("{{message}}").fadeIn(500);
+            });
+        }else if(action == 'hide'){
+            {% if mode == 'preview' %}
+                {% if hide_id == '' %}
+                    jQuery('#{{ id }}').addClass('qx-hidden');
+                {% else %}
+                    jQuery('{{ hide_id }}').addClass('qx-hidden');
+                {% endif %}
+            {% endif %}
+        }
+    }
+});
+
+{% endif %}
+{#{% endif %}#}
